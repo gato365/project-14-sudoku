@@ -60,11 +60,12 @@ const generateSudoku = (holes) => {
     return [board, solution];
 }
 
-const formatBoard = (board) => {
-    return board.map(row => row.join("").replace(/0/g, "-"));
+function formatBoard(board) {
+    return board.map(row => row.join("").replace(/0/g, " "));
 }
 
 let [board, solution] = generateSudoku(20);
 
-console.log(formatBoard(board));
-console.log(formatBoard(solution));
+ console.log(formatBoard(board));
+ console.log(formatBoard(solution));
+
