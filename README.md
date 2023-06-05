@@ -25,6 +25,10 @@ This is an open-source Sudoku game application created by gato365. The current v
 
 7. [ ] **Generate different boards**: This might be complex depending on how sophisticated you want the board generation to be. You could use a simple random number generator to fill in a certain number of cells, or you could use a more complex algorithm to generate boards with unique solutions.
 
+7a. [ ] **generat board that unique**:
+https://dev.to/dsasse07/generating-solving-sudoku-in-js-ruby-with-backtracking-4hm 
+
+
 8. [ ] **Create Difficulty**: This involves creating an algorithm to assess the difficulty of a generated Sudoku board. This might require some research into how Sudoku difficulty is typically assessed. This feature would also include UI changes to allow the user to select a difficulty before starting a game.
 
 9. [ ] **Save the data into database**: This requires setting up a backend for your app and integrating it with a database. You'll need to set up an API for your app to interact with, and you'll need to decide on a schema for your data. You might use a technology like Firebase, or set up your own server with Node.js and a database like PostgreSQL.
@@ -37,6 +41,9 @@ This is an open-source Sudoku game application created by gato365. The current v
 11. [ ] **Create a leaderboard**: This involves setting up a system to track multiple players' scores and display them in a leaderboard. This would likely require a backend and database to store the scores, as well as changes to your React app to display the leaderboard.
 
 12. [ ] **Make it into an apple app**: This is potentially the most complex task, as it involves learning about iOS development and possibly a whole new set of technologies. You might use a technology like React Native to port your React app to iOS, or you might need to learn Swift and the iOS SDK to build a native app.
+
+
+- [ ] Make the board not show up until the user clicks the "Start Game" button.
 
 ## Future Features
 
