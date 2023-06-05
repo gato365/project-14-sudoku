@@ -71,3 +71,6 @@ hr {
 .vertical-line {
     border-right: 1px solid black;
 }
+#start-button {
+    display: block;
+}

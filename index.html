@@ -1,30 +1,36 @@
 <!-- Create the template of html file but reference the js and css files in the directory -->
 <!DOCTYPE html>
 <html>
+
 <head>
-	<meta charset="utf-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0 user-scalable=no">
-	<title>Sudoku</title>
-	<link rel="stylesheet" href="assets/css/style.css"/>
-    <script src = "assets/js/app.js"></script>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0 user-scalable=no">
+    <title>Sudoku</title>
+    <link rel="stylesheet" href="assets/css/style.css" />
+
 </head>
+
 <body>
-<h1>Sudoku</h1>
-<hr>
-<h2 id="errors">0</h2>
+    <h1>Sudoku</h1>
+    <hr>
+    <h2 id="errors">0</h2>
 
-<div id = "board"></div>
-<br>
-<div id = "digits"></div>
+    <div id="timer">00:00:00</div>
 
-<form id="strategy-form">
-    <label for="strategy">Strategy:</label><br>
-    <textarea id="strategy" name="strategy" rows="4" cols="50">
+    <div id="board"></div>
+    <br>
+    <div id="digits"></div>
+
+    <form id="strategy-form">
+        <label for="strategy">Strategy:</label><br>
+        <textarea id="strategy" name="strategy" rows="4" cols="50">
     </textarea><br>
-    <input type="submit" value="Submit">
-</form>
-
-	
+        <input type="submit" value="Submit">
+    </form>
+    <button id="start-button">Start Game</button>
+    <button id="display-strategies">Display Strategies</button>
+    <div id="strategies-container"></div>
+    <script src="assets/js/app.js"></script>
 </body>
-</html>
 
+</html>

@@ -10,7 +10,8 @@ This is an open-source Sudoku game application created by gato365. The current v
 
 
 # Current Plan Features
-1. [ ] **Location to record strategies**: This can be implemented as a simple text input field where users can jot down their thoughts. You'll need to add a component for this in your React app and wire it up to the state of the app so the strategies are saved.
+1. [X] **Location to record strategies**: This can be implemented as a simple text input field where users can jot down their thoughts. You'll need to add a component for this in your React app and wire it up to the state of the app so the strategies are saved.
+
 
 2. [ ] **Hide timer ability**: This involves adding a toggle button that changes the visibility of the timer. This would require some conditional rendering in your React components.
 
@@ -27,6 +28,9 @@ This is an open-source Sudoku game application created by gato365. The current v
 8. [ ] **Create Difficulty**: This involves creating an algorithm to assess the difficulty of a generated Sudoku board. This might require some research into how Sudoku difficulty is typically assessed. This feature would also include UI changes to allow the user to select a difficulty before starting a game.
 
 9. [ ] **Save the data into database**: This requires setting up a backend for your app and integrating it with a database. You'll need to set up an API for your app to interact with, and you'll need to decide on a schema for your data. You might use a technology like Firebase, or set up your own server with Node.js and a database like PostgreSQL.
+
+    
+9a. [ ] **Save strategies into database**: This requires setting up a backend for your app and integrating it with a database. You'll need to set up an API for your app to interact with, and you'll need to decide on a schema for your data. You might use a technology like Firebase, or set up your own server with Node.js and a database like PostgreSQL.
 
 10. [ ] **Create a scoring mechanism**: This could be as simple as timing how long it takes the player to complete the board, or it could involve more complex metrics like how efficiently the player filled in the board. You'll need to decide on the rules for scoring and implement them in your app.
 

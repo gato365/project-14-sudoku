@@ -94,6 +94,32 @@ function selectTile() {
         }
     }
 }
+function startGame() {
+    // Clear errors
+    errors = 0;
+    document.getElementById('errors').textContent = '0';
+
+    // Reset board
+    let boardElement = document.getElementById("board");
+    boardElement.innerHTML = '';  // Clear board
+    let digitsElement = document.getElementById("digits");
+    digitsElement.innerHTML = ''; // Clear digits
+
+    setGame(); // Reinitialize game
+
+    // Reset timer
+    seconds = 0;
+    minutes = 0;
+    hours = 0;
+    updateTimer();
+
+    // Reset strategy
+    document.getElementById('strategy').value = '';
+
+    // Hide strategies
+    document.getElementById('strategies-container').innerHTML = '';
+}
+
 
 
 document.getElementById('strategy-form').addEventListener('submit', function (e) {
@@ -107,9 +133,77 @@ document.getElementById('strategy-form').addEventListener('submit', function (e)
 
     // get the date and time
     let date = new Date();
-    let key = date.toLocaleString();
+    let key = "sudoku-strategy:" + date.toLocaleString();
+    localStorage.setItem(key, strategy);
     // save strategy into local storage with date and time
 localStorage.setItem(key, strategy);
 
 
+});
+
+document.getElementById('display-strategies').addEventListener('click', function() {
+    // Get the div where the strategies will be displayed
+    let strategiesContainer = document.getElementById('strategies-container');
+
+    // Clear the container
+    strategiesContainer.innerHTML = "";
+
+    // Get all strategies from local storage
+    for (let i = 0; i < localStorage.length; i++) {
+        let key = localStorage.key(i);
+        if (key.startsWith("sudoku-strategy:")) {
+        let strategy = localStorage.getItem(key);
+        
+        // Create a new paragraph for each strategy and append it to the container
+        let p = document.createElement('p');
+        p.textContent = `${key}: ${strategy}`;
+        strategiesContainer.appendChild(p);
+        }
+    }
+
+    // If no strategies are found, display a message
+    if (localStorage.length === 0) {
+        strategiesContainer.textContent = "No strategies found.";
+    }
+});
+
+
+// Timer information
+let timer;
+let seconds = 0;
+let minutes = 0;
+let hours = 0;
+
+// Update the timer div with the current time
+function updateTimer() {
+    let timerDiv = document.getElementById('timer');
+    timerDiv.textContent = (hours < 10 ? "0" + hours : hours) + ":" + 
+                           (minutes < 10 ? "0" + minutes : minutes) + ":" + 
+                           (seconds < 10 ? "0" + seconds : seconds);
+}
+
+// Start the timer
+function startTimer() {
+    timer = setInterval(function() {
+        seconds++;
+        if (seconds >= 60) {
+            seconds = 0;
+            minutes++;
+        }
+        if (minutes >= 60) {
+            minutes = 0;
+            hours++;
+        }
+        updateTimer();
+    }, 1000);
+}
+
+// Add an event listener to the start button
+document.getElementById('start-button').addEventListener('click', function() {
+    // Start the game and the timer
+    startGame();
+    startTimer();
+    
+    // Hide the start button
+    this.style.display = 'none';
 });
