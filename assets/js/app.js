@@ -28,7 +28,7 @@ var solution = [
     "812945763"
 ]
 
-window.onload = function() {
+window.onload = function () {
     setGame();
 }
 
@@ -66,7 +66,7 @@ function setGame() {
     }
 }
 
-function selectNumber(){
+function selectNumber() {
     if (numSelected != null) {
         numSelected.classList.remove("number-selected");
     }
@@ -94,3 +94,22 @@ function selectTile() {
         }
     }
 }
+
+
+document.getElementById('strategy-form').addEventListener('submit', function (e) {
+    e.preventDefault();  // Prevent the form from being submitted in the traditional way
+
+    let strategy = document.getElementById('strategy').value;
+    console.log(strategy);  // This will print the strategy to the console
+
+    // Here, you would add the code to send the strategy to your database
+
+
+    // get the date and time
+    let date = new Date();
+    let key = date.toLocaleString();
+    // save strategy into local storage with date and time
+localStorage.setItem(key, strategy);
+
+
+});

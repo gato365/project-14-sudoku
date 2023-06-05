@@ -4,25 +4,12 @@ Getting it to work
 
 
 
+# Project 14 Sudoku
+
+This is an open-source Sudoku game application created by gato365. The current version provides a basic Sudoku game experience, with plans to include more features.
 
 
-
-List of Features:
-
-Generate different boards
-Location to record strategies
-Mouse highlight row and column ability
-Timer
-Hide timer ability
-Hide strategies ability
-How many numbers are needed for each number
-Save the data into database
-Create Difficulty
-Create a scoring mechanism
-Create a leaderboard
-Make it into an apple app
-Create this using react
-
+# Current Plan Features
 1. [ ] **Location to record strategies**: This can be implemented as a simple text input field where users can jot down their thoughts. You'll need to add a component for this in your React app and wire it up to the state of the app so the strategies are saved.
 
 2. [ ] **Hide timer ability**: This involves adding a toggle button that changes the visibility of the timer. This would require some conditional rendering in your React components.
@@ -46,3 +33,17 @@ Create this using react
 11. [ ] **Create a leaderboard**: This involves setting up a system to track multiple players' scores and display them in a leaderboard. This would likely require a backend and database to store the scores, as well as changes to your React app to display the leaderboard.
 
 12. [ ] **Make it into an apple app**: This is potentially the most complex task, as it involves learning about iOS development and possibly a whole new set of technologies. You might use a technology like React Native to port your React app to iOS, or you might need to learn Swift and the iOS SDK to build a native app.
+
+## Future Features
+
+1. **Progress Tracker**: Track your progress over time. This could include tracking the number of games played, the number of games won, and the time taken to complete each game.
+
+2. **Performance Metrics**: Implement performance metrics such as the average time taken to complete a game, the maximum and minimum times, and the number of attempts per game.
+
+3. **Learning curve analysis**: Track how the time taken to complete games changes over time. This could help you visualize your improvement as you become more familiar with the game.
+
+4. **Strategy effectiveness**: If you're using different strategies in different games, you could track which strategies lead to faster game completion times.
+
+5. **Error tracking**: Track the number of mistakes you make in each game. This could help you identify areas where you need to improve.
+
+6. **Difficulty progression**: Keep a record of the difficulty of the games you're playing and see if you're able to handle more difficult games over time.
