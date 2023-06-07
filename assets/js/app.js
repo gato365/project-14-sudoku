@@ -29,8 +29,19 @@ var solution = [
 ]
 
 window.onload = function () {
+    // Restore board and errors from local storage
+    let savedBoard = localStorage.getItem('board');
+    let savedErrors = localStorage.getItem('errors');
+
+    if (savedBoard && savedErrors) {
+        board = JSON.parse(savedBoard);
+        errors = parseInt(savedErrors);
+    }
+
+    // Call setGame() to initialize the board
     setGame();
-}
+};
+
 
 function setGame() {
     // Digits 1-9
@@ -106,7 +117,9 @@ function startGame() {
     digitsElement.innerHTML = ''; // Clear digits
 
     setGame(); // Reinitialize game
-
+    // Save board and errors to local storage
+    localStorage.setItem('board', JSON.stringify(board));
+    localStorage.setItem('errors', errors);
     // Reset timer
     seconds = 0;
     minutes = 0;
@@ -136,12 +149,12 @@ document.getElementById('strategy-form').addEventListener('submit', function (e)
     let key = "sudoku-strategy:" + date.toLocaleString();
     localStorage.setItem(key, strategy);
     // save strategy into local storage with date and time
-localStorage.setItem(key, strategy);
+    localStorage.setItem(key, strategy);
 
 
 });
 
-document.getElementById('display-strategies').addEventListener('click', function() {
+document.getElementById('display-strategies').addEventListener('click', function () {
     // Get the div where the strategies will be displayed
     let strategiesContainer = document.getElementById('strategies-container');
 
@@ -152,12 +165,12 @@ document.getElementById('display-strategies').addEventListener('click', function
     for (let i = 0; i < localStorage.length; i++) {
         let key = localStorage.key(i);
         if (key.startsWith("sudoku-strategy:")) {
-        let strategy = localStorage.getItem(key);
-        
-        // Create a new paragraph for each strategy and append it to the container
-        let p = document.createElement('p');
-        p.textContent = `${key}: ${strategy}`;
-        strategiesContainer.appendChild(p);
+            let strategy = localStorage.getItem(key);
+
+            // Create a new paragraph for each strategy and append it to the container
+            let p = document.createElement('p');
+            p.textContent = `${key}: ${strategy}`;
+            strategiesContainer.appendChild(p);
         }
     }
 
@@ -177,14 +190,14 @@ let hours = 0;
 // Update the timer div with the current time
 function updateTimer() {
     let timerDiv = document.getElementById('timer');
-    timerDiv.textContent = (hours < 10 ? "0" + hours : hours) + ":" + 
-                           (minutes < 10 ? "0" + minutes : minutes) + ":" + 
-                           (seconds < 10 ? "0" + seconds : seconds);
+    timerDiv.textContent = (hours < 10 ? "0" + hours : hours) + ":" +
+        (minutes < 10 ? "0" + minutes : minutes) + ":" +
+        (seconds < 10 ? "0" + seconds : seconds);
 }
 
 // Start the timer
 function startTimer() {
-    timer = setInterval(function() {
+    timer = setInterval(function () {
         seconds++;
         if (seconds >= 60) {
             seconds = 0;
@@ -199,11 +212,18 @@ function startTimer() {
 }
 
 // Add an event listener to the start button
-document.getElementById('start-button').addEventListener('click', function() {
+document.getElementById('start-button').addEventListener('click', function () {
     // Start the game and the timer
     startGame();
     startTimer();
-    
+
     // Hide the start button
     this.style.display = 'none';
+
+    // 
+    setGame()
+    // Unhide Strategy Form
+    document.getElementById('strategy-form').style.display = 'block';
+
+
 });

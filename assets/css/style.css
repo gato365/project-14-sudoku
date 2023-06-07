@@ -61,16 +61,26 @@ hr {
 }
 
 .tile-start {
-    background-color: whitesmoke;
+    background-color: rgb(125, 154, 196);
 }
 
 .horizontal-line {
-    border-bottom: 1px solid black;
+    border-bottom: 1.2px solid black;
 }
 
 .vertical-line {
-    border-right: 1px solid black;
+    border-right: 1.2px solid black;
 }
 #start-button {
+    display: block;
+}
+
+/* The class  "the-game"  is hidden */ 
+.the-game {
+    display: none;
+}
+#start-button{
+    /* center button */
+    margin: 0 auto;
     display: block;
 }
