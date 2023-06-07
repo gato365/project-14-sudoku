@@ -44,6 +44,7 @@ hr {
     display: none;
 }
 
+/* existing .number class */
 .number {
     width: 44px; 
     height: 44px;
@@ -57,6 +58,27 @@ hr {
     justify-content: center;
     align-items: center;
 }
+
+/* new class for game selection numbers */
+.selection-number {
+    display: inline-flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    width: 44px;
+    height: 44px;
+    border: 1px solid black;
+    margin: 2px;
+    cursor: pointer;
+}
+
+/* class for count */
+.count {
+    font-size: 0.6em;
+    vertical-align: super;
+}
+
+
 
 .number-selected {
     background-color: gray;
@@ -94,5 +116,8 @@ hr {
 }
 
 .highlighted {
-    background-color: #d3cc73;  /* Change this to whatever color you want */
+    background-color: #cfcb8d;  /* Change this to whatever color you want */
+    /* background transperancy */
+    
+    
 }
