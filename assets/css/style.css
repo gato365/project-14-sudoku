@@ -92,3 +92,7 @@ hr {
     margin: 0 auto;
     display: block;  
 }
+
+.highlighted {
+    background-color: #d3cc73;  /* Change this to whatever color you want */
+}

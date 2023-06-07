@@ -39,7 +39,15 @@ window.onload = function () {
     }
 
     // Call setGame() to initialize the board
-   
+    setGame();
+
+    // Adding highlight event listeners after cells are created
+    let cells = document.querySelectorAll('.cell');
+
+    cells.forEach(cell => {
+        cell.addEventListener('mouseenter', highlight);
+        cell.addEventListener('mouseleave', removeHighlight);
+    });
 };
 
 
@@ -71,8 +79,9 @@ function setGame() {
                 tile.classList.add("vertical-line");
             }
             tile.addEventListener("click", selectTile);
-            tile.classList.add("tile");
+            tile.classList.add("tile", "cell");
             document.getElementById("board").append(tile);
+            tile.id = 'cell-' + r.toString() + "-" + c.toString();
         }
     }
 }
@@ -256,7 +265,7 @@ document.getElementById('hide-strategy-button').addEventListener('click', functi
     }
 
 
-});    
+});
 
 
 
@@ -266,15 +275,24 @@ document.getElementById('start-button').addEventListener('click', function () {
     startGame();
     startTimer();
 
-    // Show the board and digits by setting display to flex
-    document.getElementById('board').style.display = 'flex';
-    document.getElementById('board').style.flexWrap= 'wrap';
-    document.getElementById('digits').style.display = 'flex';
-    document.getElementById('digits').style.flexWrap= 'wrap';
-
-
     // Reinitialize the game
     setGame()
+
+
+    // Reattach the highlighting event listeners to the new cells
+    let cells = document.querySelectorAll('.cell');
+    cells.forEach(cell => {
+        cell.addEventListener('mouseenter', highlight);
+        cell.addEventListener('mouseleave', removeHighlight);
+    });
+
+    // Show the board and digits by setting display to flex
+    document.getElementById('board').style.display = 'flex';
+    document.getElementById('board').style.flexWrap = 'wrap';
+    document.getElementById('digits').style.display = 'flex';
+    document.getElementById('digits').style.flexWrap = 'wrap';
+
+
 
     // Hide the start button
     this.style.display = 'none';
@@ -291,5 +309,35 @@ document.getElementById('start-button').addEventListener('click', function () {
     document.getElementById('hide-strategy-button').style.display = 'block';
 
 });
+
+
+
+
+function highlight(event) {
+    let cell = event.target;
+
+    // Assuming that your cells have id's like 'cell-0-0', 'cell-0-1', etc.
+    let [row, col] = cell.id.split('-').slice(1).map(Number);
+
+    for (let i = 0; i < 9; i++) {
+        // Highlight the row
+        let rowCell = document.getElementById(`cell-${row}-${i}`);
+        rowCell.classList.add('highlighted');
+
+        // Highlight the column
+        let colCell = document.getElementById(`cell-${i}-${col}`);
+        colCell.classList.add('highlighted');
+    }
+}
+
+
+function removeHighlight() {
+    let highlightedCells = document.querySelectorAll('.highlighted');
+
+    highlightedCells.forEach(cell => {
+        cell.classList.remove('highlighted');
+    });
+}
+
 
 

@@ -15,11 +15,11 @@ This is an open-source Sudoku game application created by gato365. The current v
 
 2. [X] **Hide timer ability**: This involves adding a toggle button that changes the visibility of the timer. This would require some conditional rendering in your React components.
 
-3. [ ] **Hide strategies ability**: Similar to the hide timer ability, this would involve adding a button that toggles the visibility of the strategy recording area.
+3. [X] **Hide strategies ability**: Similar to the hide timer ability, this would involve adding a button that toggles the visibility of the strategy recording area.
 
-4. [ ] **Timer**: This feature requires you to set up an interval that updates the time elapsed since the player started the game. There are many ways to do this in JavaScript, and you can display the timer using a React component.
+4. [X] **Timer**: This feature requires you to set up an interval that updates the time elapsed since the player started the game. There are many ways to do this in JavaScript, and you can display the timer using a React component.
 
-5. [ ] **Mouse highlight row and column ability**: This requires adding event listeners to the Sudoku grid cells in your app. When the mouse hovers over a cell, you would update the CSS of the relevant row and column to highlight them.
+5. [X] **Mouse highlight row and column ability**: This requires adding event listeners to the Sudoku grid cells in your app. When the mouse hovers over a cell, you would update the CSS of the relevant row and column to highlight them.
 
 6. [ ] **How many numbers are needed for each number**: This could involve adding a counter for each number (1-9) that updates as the player fills in the Sudoku grid. This would require both JavaScript to update the counters and React to display them.
 
