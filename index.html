@@ -11,46 +11,49 @@
 </head>
 
 <body>
-    <h1>Sudoku</h1>
-    <hr>
-    <h2 id="errors">0</h2>
+    <div class="container">
+        <h1>Sudoku</h1>
+        <hr>
 
-    <div id="timer">00:00:00</div>
+        <!-- Errors and timer section -->
+        <div class="header-info">
+            <h2 id="errors">Errors: 0</h2>
+            <div id="timer">Time: 00:00:00</div>
+        </div>
 
-    <div class="the-game" id="board"></div>
-    <br>
-    <div class="the-game" id="digits"></div>
+        <!-- Start button -->
+        <div class="center">
+            <button class="button" id="start-button">Start Game</button>
+        </div>
 
+        <!-- Hide/show buttons -->
+        <div class="button-group">
+            <button class="button" id="hide-timer-button" style="display:none">Hide Timer</button>
+            <button class="button" id="hide-strategy-button" style="display:none">Hide Strategy</button>
+        </div>
 
-    
-    <form class="the-game" id="strategy-form">
-        <label for="strategy">Strategy:</label><br>
-        <textarea id="strategy" name="strategy" rows="4" cols="50">
-    </textarea><br>
-        <input type="submit" value="Submit">
-    <button id="display-strategies">Display Strategies</button>
+        <!-- Game board -->
+        <div class="game-container">
+            <div class="the-game" id="board"></div>
+            <div class="the-game" id="digits"></div>
+        </div>
 
-    </form>
+        <!-- Strategy form -->
+        <form class="the-game" id="strategy-form">
+            <label for="strategy">Strategy:</label><br>
+            <textarea id="strategy" name="strategy" rows="4" cols="50"></textarea><br>
+            <input type="submit" value="Submit">
+            <button id="display-strategies">Display Strategies</button>
+        </form>
 
-
-
-    <!-- Center start button below -->
-    <div class="center">
-        <button class="button" id="start-button">Start Game</button>
-
-
+        <!-- Strategies container -->
+        <div id="strategies-container"></div>
     </div>
-    <button class="button" id="hide-timer-button" style="display:none">Hide Timer</button>
 
-
-    <div id="strategies-container"></div>
-
-
-
-
-
+    <!-- Scripts -->
     <!-- <script src="assets/js/createBoard.js"></script> -->
     <script src="assets/js/app.js"></script>
 </body>
+
 
 </html>

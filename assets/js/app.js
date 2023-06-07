@@ -137,23 +137,31 @@ function startGame() {
 document.getElementById('strategy-form').addEventListener('submit', function (e) {
     e.preventDefault();  // Prevent the form from being submitted in the traditional way
 
+    // Get the strategy from the textarea
     let strategy = document.getElementById('strategy').value;
-    console.log(strategy);  // This will print the strategy to the console
 
-    // Here, you would add the code to send the strategy to your database
+    // Only save strategy if the textarea is not empty
+    if (strategy.trim() !== '') {
+        console.log(strategy);  // This will print the strategy to the console
 
+        // Here, you would add the code to send the strategy to your database
 
-    // get the date and time
-    let date = new Date();
-    let key = "sudoku-strategy:" + date.toLocaleString();
-    localStorage.setItem(key, strategy);
-    // save strategy into local storage with date and time
-    localStorage.setItem(key, strategy);
+        // Get the date and time
+        let date = new Date();
+        let key = "sudoku-strategy:" + date.toLocaleString();
 
-
+        // Save strategy into local storage with date and time
+        localStorage.setItem(key, strategy);
+    } else {
+        console.log('No strategy entered');  // You can handle this case as you wish
+    }
 });
 
+
 document.getElementById('display-strategies').addEventListener('click', function () {
+
+
+
     // Get the div where the strategies will be displayed
     let strategiesContainer = document.getElementById('strategies-container');
 
@@ -229,7 +237,29 @@ document.getElementById('hide-timer-button').addEventListener('click', function 
 });
 
 
-// Add an event listener to the start button
+
+
+// Create Hide Strategies button
+document.getElementById('hide-strategy-button').addEventListener('click', function () {
+
+    // Get the div where the strategies will be displayed
+    let strategiesContainer = document.getElementById('strategy-form');
+
+    if (strategiesContainer.style.display === 'none') {
+        // if strategies are hidden, show them and change button text to 'Hide Strategies'
+        strategiesContainer.style.display = 'block';
+        this.textContent = 'Hide Strategies';
+    } else {
+        // if strategies are visible, hide them and change button text back to 'Show Strategies'
+        strategiesContainer.style.display = 'none';
+        this.textContent = 'Show Strategies';
+    }
+
+
+});    
+
+
+
 // Add an event listener to the start button
 document.getElementById('start-button').addEventListener('click', function () {
     // Start the game and the timer
@@ -252,6 +282,14 @@ document.getElementById('start-button').addEventListener('click', function () {
     // Show Hide Timer button
     document.getElementById('hide-timer-button').style.display = 'block';
 
+
+
     // Unhide Strategy Form
     document.getElementById('strategy-form').style.display = 'block';
+
+    // Show Hide Strategies button
+    document.getElementById('hide-strategy-button').style.display = 'block';
+
 });
+
+
