@@ -39,7 +39,7 @@ window.onload = function () {
     }
 
     // Call setGame() to initialize the board
-    setGame();
+   
 };
 
 
@@ -116,9 +116,6 @@ function startGame() {
     let digitsElement = document.getElementById("digits");
     digitsElement.innerHTML = ''; // Clear digits
 
-    // Is this line needeed?
-    
-    // setGame(); // Reinitialize game
     // Save board and errors to local storage
     localStorage.setItem('board', JSON.stringify(board));
     localStorage.setItem('errors', errors);
@@ -218,12 +215,12 @@ var timerVisible = true;
 document.getElementById('hide-timer-button').addEventListener('click', function () {
     var timerDiv = document.getElementById('timer');
 
-    if(timerVisible){
+    if (timerVisible) {
         // if timer is visible, hide it and change button text to 'Show Timer'
         timerDiv.style.display = 'none';
         this.textContent = 'Show Timer';
         timerVisible = false;
-    }else{
+    } else {
         // if timer is hidden, show it and change button text back to 'Hide Timer'
         timerDiv.style.display = 'block';
         this.textContent = 'Hide Timer';
@@ -233,19 +230,27 @@ document.getElementById('hide-timer-button').addEventListener('click', function 
 
 
 // Add an event listener to the start button
+// Add an event listener to the start button
 document.getElementById('start-button').addEventListener('click', function () {
     // Start the game and the timer
     startGame();
     startTimer();
+
+    // Show the board and digits by setting display to flex
+    document.getElementById('board').style.display = 'flex';
+    document.getElementById('board').style.flexWrap= 'wrap';
+    document.getElementById('digits').style.display = 'flex';
+    document.getElementById('digits').style.flexWrap= 'wrap';
+
+
+    // Reinitialize the game
+    setGame()
 
     // Hide the start button
     this.style.display = 'none';
 
     // Show Hide Timer button
     document.getElementById('hide-timer-button').style.display = 'block';
-
-    // Reinitialize the game
-    setGame()
 
     // Unhide Strategy Form
     document.getElementById('strategy-form').style.display = 'block';

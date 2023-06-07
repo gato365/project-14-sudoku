@@ -13,7 +13,7 @@ This is an open-source Sudoku game application created by gato365. The current v
 1. [X] **Location to record strategies**: This can be implemented as a simple text input field where users can jot down their thoughts. You'll need to add a component for this in your React app and wire it up to the state of the app so the strategies are saved.
 
 
-2. [ ] **Hide timer ability**: This involves adding a toggle button that changes the visibility of the timer. This would require some conditional rendering in your React components.
+2. [X] **Hide timer ability**: This involves adding a toggle button that changes the visibility of the timer. This would require some conditional rendering in your React components.
 
 3. [ ] **Hide strategies ability**: Similar to the hide timer ability, this would involve adding a button that toggles the visibility of the strategy recording area.
 
