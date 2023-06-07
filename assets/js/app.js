@@ -116,7 +116,9 @@ function startGame() {
     let digitsElement = document.getElementById("digits");
     digitsElement.innerHTML = ''; // Clear digits
 
-    setGame(); // Reinitialize game
+    // Is this line needeed?
+    
+    // setGame(); // Reinitialize game
     // Save board and errors to local storage
     localStorage.setItem('board', JSON.stringify(board));
     localStorage.setItem('errors', errors);
@@ -211,6 +213,25 @@ function startTimer() {
     }, 1000);
 }
 
+var timerVisible = true;
+
+document.getElementById('hide-timer-button').addEventListener('click', function () {
+    var timerDiv = document.getElementById('timer');
+
+    if(timerVisible){
+        // if timer is visible, hide it and change button text to 'Show Timer'
+        timerDiv.style.display = 'none';
+        this.textContent = 'Show Timer';
+        timerVisible = false;
+    }else{
+        // if timer is hidden, show it and change button text back to 'Hide Timer'
+        timerDiv.style.display = 'block';
+        this.textContent = 'Hide Timer';
+        timerVisible = true;
+    }
+});
+
+
 // Add an event listener to the start button
 document.getElementById('start-button').addEventListener('click', function () {
     // Start the game and the timer
@@ -220,10 +241,12 @@ document.getElementById('start-button').addEventListener('click', function () {
     // Hide the start button
     this.style.display = 'none';
 
-    // 
+    // Show Hide Timer button
+    document.getElementById('hide-timer-button').style.display = 'block';
+
+    // Reinitialize the game
     setGame()
+
     // Unhide Strategy Form
     document.getElementById('strategy-form').style.display = 'block';
-
-
 });
