@@ -22,37 +22,30 @@ The project's structure is intentionally designed to allow for a comprehensive v
 
 ```
 project-14-sudoku/
-│
-├── README.md
-│
 ├── CodeCompleteReference/
 │   ├── Chapter1.md
 │   ├── Chapter2.md
 │   └── ...
 │
-├── Version1/
-│   ├── Features/
-│   │   ├── Feature1.md
-│   │   ├── Feature2.md
-│   │   └── ...
-│   ├── src/
-│   │   ├── main.py
-│   │   └── ...
-│   └── test/
-│       └── ...
+├── version_blank/
+│   ├── assets/
+│   │   ├── css/
+│   │   │   └── styles.css
+│   │   ├── js/
+│   │   │   └── app.js
+│   ├── index.html
 │
-├── Version2/
-│   ├── Features/
-│   │   ├── Feature1.md
-│   │   ├── Feature2.md
-│   │   └── ...
-│   ├── src/
-│   │   ├── main.py
-│   │   └── ...
-│   └── test/
-│       └── ...
+├── version_1/
+│   ├── assets/
+│   │   ├── css/
+│   │   │   └── styles.css
+│   │   ├── js/
+│   │   │   └── app.js
+│   ├── index.html
 │
-└── ...
+└── LICENSE
+└── README.md
+└── .gitignore
 ```
 
 
