@@ -16,9 +16,8 @@ hr {
     height: 450px;
 
     margin: 0 auto;
-    /* display: flex;
-    flex-wrap: wrap; */
-    display: none;
+    display: flex;
+    flex-wrap: wrap;
 }
 
 .tile {
@@ -39,12 +38,10 @@ hr {
     height: 50px;
 
     margin: 0 auto;
-    /* display: flex;
-    flex-wrap: wrap; */
-    display: none;
+    display: flex;
+    flex-wrap: wrap;
 }
 
-/* existing .number class */
 .number {
     width: 44px; 
     height: 44px;
@@ -59,65 +56,18 @@ hr {
     align-items: center;
 }
 
-/* new class for game selection numbers */
-.selection-number {
-    display: inline-flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: center;
-    width: 44px;
-    height: 44px;
-    border: 1px solid black;
-    margin: 2px;
-    cursor: pointer;
-}
-
-/* class for count */
-.count {
-    font-size: 0.6em;
-    vertical-align: super;
-}
-
-
-
 .number-selected {
     background-color: gray;
 }
 
 .tile-start {
-    background-color: rgb(125, 154, 196);
+    background-color: whitesmoke;
 }
 
 .horizontal-line {
-    border-bottom: 1.2px solid black;
+    border-bottom: 1px solid black;
 }
 
 .vertical-line {
-    border-right: 1.2px solid black;
-}
-#start-button {
-    display: block;
-}
-
-/* The class  "the-game"  is hidden */ 
-.the-game {
-    display: none;
-}
-#start-button{
-    /* center button */
-    margin: 0 auto;
-    display: block;
-}
-
-.button{
-    /* center button */
-    margin: 0 auto;
-    display: block;  
-}
-
-.highlighted {
-    background-color: #cfcb8d;  /* Change this to whatever color you want */
-    /* background transperancy */
-    
-    
+    border-right: 1px solid black;
 }
