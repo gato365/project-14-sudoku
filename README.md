@@ -20,7 +20,8 @@ The project's structure is intentionally designed to allow for a comprehensive v
 
 ## Directory Structure
 
-SudokuProject/
+```
+project-14-sudoku/
 │
 ├── README.md
 │
@@ -52,11 +53,86 @@ SudokuProject/
 │       └── ...
 │
 └── ...
-
+```
 
 
 ## Version Control and Features
 In this project, a key focus is the effective management of different versions of code and the associated features. Each feature is categorized in accordance with its corresponding code version, ensuring a clear link between the code's evolution and the features it introduces, modifies, or removes.
+
+
+# Sudoku Game Project
+
+This project is intended to create a Sudoku game application. The features will be introduced progressively, with each version building on the features from the previous version.
+
+## Table of Contents
+
+1. [Versions and Features](#versions-and-features)
+2. [Feature Status Key](#feature-status-key)
+3. [Future Features](#future-features)
+
+## Versions and Features
+
+Here are the different versions and their associated features:
+
+### Version 1 - Basic Sudoku Game
+- [ ] **Basic working version**
+
+### Version 2 - Enhanced Gameplay Features
+- [ ] **Location to record strategies**
+- [ ] **Hide timer ability**
+- [ ] **Hide strategies ability**
+
+### Version 3 - Game Analysis Tools
+- [ ] **Timer**
+- [ ] **Mouse highlight row and column ability**
+- [ ] **How many numbers are needed for each number**
+
+### Version 4 - Dynamic Game Generation
+- [ ] **Generate different boards**
+- [ ] **Generate unique boards**
+
+### Version 5 - Advanced Gameplay Features
+- [ ] **Create Difficulty**
+- [ ] **Save the data into database**
+- [ ] **Save strategies into database**
+
+### Version 6 - Competitive Features
+- [ ] **Create a scoring mechanism**
+- [ ] **Create a leaderboard**
+- [ ] **Make it into an apple app**
+- [ ] **Don't show board until the user clicks the "Start Game" button**
+
+### Version 7 - Progress and Performance Analysis
+- [ ] **Progress Tracker**
+- [ ] **Performance Metrics**
+- [ ] **Learning curve analysis**
+- [ ] **Strategy effectiveness**
+- [ ] **Error tracking**
+- [ ] **Difficulty progression**
+
+## Feature Status Key
+
+- [x] = Complete
+- [ ] = In Progress
+- ❌ = Deleted
+
+## Future Features
+
+This section is dedicated to recording features that might be added in future versions. Feel free to make suggestions and discuss possible improvements.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 ## Contributing
 While this project is primarily a personal learning tool, input and suggestions for improvement are always welcome. Please ensure that contributions align with the project's objectives and current structure.
