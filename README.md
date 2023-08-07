@@ -74,8 +74,8 @@ Here are the different versions and their associated features:
 
 - [X] **Location to record strategies**
 - [X] **Display Timer**
-- [ ] **Hide timer ability**
-- [ ] **Hide strategies ability**
+- [X] **Hide timer ability**
+- [X] **Hide strategies ability**
 
 ### Version 3 - Game Analysis Tools
 

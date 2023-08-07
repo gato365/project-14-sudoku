@@ -131,6 +131,8 @@ function startTimer() {
     }, 1000);
 }
 
+
+// Create Hide Timer button
 document.getElementById('hide-timer-button').addEventListener('click', function () {
     var timerDiv = document.getElementById('timer');
 
@@ -145,4 +147,24 @@ document.getElementById('hide-timer-button').addEventListener('click', function 
         this.textContent = 'Hide Timer';
         timerVisible = true;
     }
+});
+
+
+// Create Hide Strategies button
+document.getElementById('hide-strategy-button').addEventListener('click', function () {
+
+    // Get the div where the strategies will be displayed
+    let strategiesContainer = document.getElementById('strategy-form');
+
+    if (strategiesContainer.style.display === 'none') {
+        // if strategies are hidden, show them and change button text to 'Hide Strategies'
+        strategiesContainer.style.display = 'block';
+        this.textContent = 'Hide Strategies';
+    } else {
+        // if strategies are visible, hide them and change button text back to 'Show Strategies'
+        strategiesContainer.style.display = 'none';
+        this.textContent = 'Show Strategies';
+    }
+
+
 });
