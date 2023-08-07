@@ -1,10 +1,10 @@
 
-var numSelected = null;
-var tileSelected = null;
+let numSelected = null;
+let tileSelected = null;
 
-var errors = 0;
+let errors = 0;
 
-var board = [
+const board = [
     "--74916-5",
     "2---6-3-9",
     "-----7-1-",
@@ -14,9 +14,9 @@ var board = [
     "9-4-7---2",
     "67-83----",
     "81--45---"
-]
+];
 
-var solution = [
+const solution = [
     "387491625",
     "241568379",
     "569327418",
@@ -26,7 +26,8 @@ var solution = [
     "934176852",
     "675832941",
     "812945763"
-]
+];
+
 
 window.onload = function() {
     setGame();

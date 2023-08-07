@@ -35,7 +35,7 @@ project-14-sudoku/
 │   │   │   └── app.js
 │   ├── index.html
 │
-├── version_1/
+├── version1/
 │   ├── assets/
 │   │   ├── css/
 │   │   │   └── styles.css
@@ -68,15 +68,17 @@ This project is intended to create a Sudoku game application. The features will 
 Here are the different versions and their associated features:
 
 ### Version 1 - Basic Sudoku Game
-- [ ] **Basic working version**
+- [X] **Basic working version**
 
 ### Version 2 - Enhanced Gameplay Features
+
 - [ ] **Location to record strategies**
+- [ ] **Display Timer**
 - [ ] **Hide timer ability**
 - [ ] **Hide strategies ability**
 
 ### Version 3 - Game Analysis Tools
-- [ ] **Timer**
+
 - [ ] **Mouse highlight row and column ability**
 - [ ] **How many numbers are needed for each number**
 
