@@ -1,3 +1,8 @@
+// Timer information
+let timer;
+let seconds = 0;
+let minutes = 0;
+let hours = 0;
 
 let numSelected = null;
 let tileSelected = null;
@@ -30,6 +35,7 @@ const solution = [
 
 
 window.onload = function() {
+    startTimer();
     setGame();
 }
 
@@ -95,4 +101,31 @@ function selectTile() {
             document.getElementById("errors").innerText = errors;
         }
     }
+}
+
+
+
+// Timer Related Functions
+// Update the timer div with the current time
+function updateTimer() {
+    let timerDiv = document.getElementById('timer');
+    timerDiv.textContent = (hours < 10 ? "0" + hours : hours) + ":" +
+        (minutes < 10 ? "0" + minutes : minutes) + ":" +
+        (seconds < 10 ? "0" + seconds : seconds);
+}
+
+// Start the timer
+function startTimer() {
+    timer = setInterval(function () {
+        seconds++;
+        if (seconds >= 60) {
+            seconds = 0;
+            minutes++;
+        }
+        if (minutes >= 60) {
+            minutes = 0;
+            hours++;
+        }
+        updateTimer();
+    }, 1000);
 }

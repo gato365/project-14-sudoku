@@ -72,8 +72,8 @@ Here are the different versions and their associated features:
 
 ### Version 2 - Enhanced Gameplay Features
 
-- [ ] **Location to record strategies**
-- [ ] **Display Timer**
+- [X] **Location to record strategies**
+- [X] **Display Timer**
 - [ ] **Hide timer ability**
 - [ ] **Hide strategies ability**
 
