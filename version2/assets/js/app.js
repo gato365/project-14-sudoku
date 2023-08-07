@@ -3,9 +3,10 @@ let timer;
 let seconds = 0;
 let minutes = 0;
 let hours = 0;
+var timerVisible = true;
 
 let numSelected = null;
-let tileSelected = null;
+
 
 let errors = 0;
 
@@ -129,3 +130,19 @@ function startTimer() {
         updateTimer();
     }, 1000);
 }
+
+document.getElementById('hide-timer-button').addEventListener('click', function () {
+    var timerDiv = document.getElementById('timer');
+
+    if (timerVisible) {
+        // if timer is visible, hide it and change button text to 'Show Timer'
+        timerDiv.style.display = 'none';
+        this.textContent = 'Show Timer';
+        timerVisible = false;
+    } else {
+        // if timer is hidden, show it and change button text back to 'Hide Timer'
+        timerDiv.style.display = 'block';
+        this.textContent = 'Hide Timer';
+        timerVisible = true;
+    }
+});
