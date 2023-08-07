@@ -65,6 +65,7 @@ function setGame() {
             document.getElementById("board").append(tile);
         }
     }
+
 }
 
 function selectNumber(){
