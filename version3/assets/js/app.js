@@ -47,41 +47,41 @@ window.onload = function() {
     });
 }
 
-function setGame() {
-    // Digits 1-9
-    for (let i = 1; i <= 9; i++) {
-        //<div id="1" class="number">1</div>
-        let number = document.createElement("div");
-        number.id = i
-        number.innerText = i;
-        number.addEventListener("click", selectNumber);
-        number.classList.add("number");
-        document.getElementById("digits").appendChild(number);
-    }
+// function setGame() {
+//     // Digits 1-9
+//     for (let i = 1; i <= 9; i++) {
+//         //<div id="1" class="number">1</div>
+//         let number = document.createElement("div");
+//         number.id = i
+//         number.innerText = i;
+//         number.addEventListener("click", selectNumber);
+//         number.classList.add("number");
+//         document.getElementById("digits").appendChild(number);
+//     }
 
-    // Board 9x9
-    for (let r = 0; r < 9; r++) {
-        for (let c = 0; c < 9; c++) {
-            let tile = document.createElement("div");
-            tile.id = r.toString() + "-" + c.toString();
-            if (board[r][c] != "-") {
-                tile.innerText = board[r][c];
-                tile.classList.add("tile-start");
-            }
-            if (r == 2 || r == 5) {
-                tile.classList.add("horizontal-line");
-            }
-            if (c == 2 || c == 5) {
-                tile.classList.add("vertical-line");
-            }
-            tile.addEventListener("click", selectTile);
-            tile.classList.add("tile", "cell");
-            document.getElementById("board").append(tile);
-            tile.id = 'cell-' + r.toString() + "-" + c.toString();
-        }
-    }
+//     // Board 9x9
+//     for (let r = 0; r < 9; r++) {
+//         for (let c = 0; c < 9; c++) {
+//             let tile = document.createElement("div");
+//             tile.id = r.toString() + "-" + c.toString();
+//             if (board[r][c] != "-") {
+//                 tile.innerText = board[r][c];
+//                 tile.classList.add("tile-start");
+//             }
+//             if (r == 2 || r == 5) {
+//                 tile.classList.add("horizontal-line");
+//             }
+//             if (c == 2 || c == 5) {
+//                 tile.classList.add("vertical-line");
+//             }
+//             tile.addEventListener("click", selectTile);
+//             tile.classList.add("tile", "cell");
+//             document.getElementById("board").append(tile);
+//             tile.id = 'cell-' + r.toString() + "-" + c.toString();
+//         }
+//     }
 
-}
+// }
 
 function selectNumber(){
     if (numSelected != null) {
@@ -102,6 +102,8 @@ function selectTile() {
         let r = parseInt(coords[0]);
         let c = parseInt(coords[1]);
 
+        console.log(r, c);
+        
         if (solution[r][c] == numSelected.id) {
             this.innerText = numSelected.id;
         }
@@ -206,3 +208,61 @@ function removeHighlight() {
 }
 
 
+function setGame() {
+    const counts = getNumberCounts(board);
+
+    // Digits 1-9
+    for (let i = 1; i <= 9; i++) {
+        let number = document.createElement("div");
+        number.id = i;
+        number.innerHTML = i + '<sup>' + (9 - counts[i]) + '</sup>'; // display count as superscript
+        number.addEventListener("click", selectNumber);
+        number.classList.add("number");
+        document.getElementById("digits").appendChild(number);
+    }
+
+    // Board 9x9
+    for (let r = 0; r < 9; r++) {
+        for (let c = 0; c < 9; c++) {
+            let tile = document.createElement("div");
+            tile.id = 'cell-' + r.toString() + "-" + c.toString();
+            if (board[r][c] != "-") {
+                tile.innerText = board[r][c];
+                tile.classList.add("tile-start");
+            }
+            if (r == 2 || r == 5) {
+                tile.classList.add("horizontal-line");
+            }
+            if (c == 2 || c == 5) {
+                tile.classList.add("vertical-line");
+            }
+            tile.addEventListener("click", selectTile);
+            tile.classList.add("tile", "cell");
+            document.getElementById("board").append(tile);
+        }
+    }
+}
+
+function getNumberCounts(board) {
+    const counts = {
+        '1': 0,
+        '2': 0,
+        '3': 0,
+        '4': 0,
+        '5': 0,
+        '6': 0,
+        '7': 0,
+        '8': 0,
+        '9': 0,
+    };
+
+    for (let row of board) {
+        for (let char of row) {
+            if (char !== "-") {
+                counts[char]++;
+            }
+        }
+    }
+
+    return counts;
+}
