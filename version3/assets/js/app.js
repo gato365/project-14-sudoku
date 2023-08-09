@@ -99,10 +99,10 @@ function selectTile() {
 
         // "0-0" "0-1" .. "3-1"
         let coords = this.id.split("-"); //["0", "0"]
-        let r = parseInt(coords[0]);
-        let c = parseInt(coords[1]);
+        let r = parseInt(coords[1]);
+        let c = parseInt(coords[2]);
 
-        console.log(r, c);
+       
         
         if (solution[r][c] == numSelected.id) {
             this.innerText = numSelected.id;
