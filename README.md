@@ -79,7 +79,7 @@ Here are the different versions and their associated features:
 
 ### Version 3 - Game Analysis Tools
 
-- [ ] **Mouse highlight row and column ability**
+- [X] **Mouse highlight row and column ability**
 - [ ] **How many numbers are needed for each number**
 
 ### Version 4 - Dynamic Game Generation

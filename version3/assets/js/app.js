@@ -204,3 +204,5 @@ function removeHighlight() {
         cell.classList.remove('highlighted');
     });
 }
+
+
