@@ -84,9 +84,15 @@ Here are the different versions and their associated features:
 
 ### Version 4 - Dynamic Game Generation
 
+
+- [X] **Generate different boards**
+- [ ] **Generate different difficulties**
+    - [ ] Easy
+    - [ ] Medium
+    - [ ] Hard
+    - [ ] Expert
+- [ ] **Incorporate board generation into the game**
 - [ ] **New Game button**
-- [ ] **Generate different boards**
-- [ ] **Generate unique boards**
 
 ### Version 5 - Advanced Gameplay Features
 - [ ] **Create Difficulty**

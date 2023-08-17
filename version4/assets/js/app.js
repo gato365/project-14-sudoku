@@ -35,7 +35,7 @@ const solution = [
 ];
 
 
-window.onload = function() {
+window.onload = function () {
     startTimer();
     setGame();
 
@@ -53,7 +53,7 @@ function setGame() {
     // Digits 1-9
     for (let i = 1; i <= 9; i++) {
         let number = document.createElement("div");
-         number.id = i;
+        number.id = i;
         number.innerHTML = '<p>' + i + '<sup>' + (9 - counts[i]) + '</sup>' + '<p>'; // display count as superscript
         number.addEventListener("click", selectNumber);
         number.classList.add("number");
@@ -83,9 +83,25 @@ function setGame() {
 
 
     setInitialCounts();
+
+
+    // Generate a new Sudoku board
+    // Example usage
+    const solutionBoard = generateSolution();
+    const easyPuzzle = generatePuzzle(solutionBoard, 35);    // 35 clues for Easy difficulty
+    const mediumPuzzle = generatePuzzle(solutionBoard, 29);  // 29 clues for Medium difficulty
+    const hardPuzzle = generatePuzzle(solutionBoard, 24);    // 24 clues for Hard difficulty
+    const expertPuzzle = generatePuzzle(solutionBoard, 20);  // 20 clues for Expert difficulty
+
+    console.log('Solution:', solution);
+    console.log('Easy Puzzle:', easyPuzzle);
+    console.log('Medium Puzzle:', mediumPuzzle);
+    console.log('Hard Puzzle:', hardPuzzle);
+    console.log('Expert Puzzle:', expertPuzzle);
+
 }
 
-function selectNumber(){
+function selectNumber() {
     if (numSelected != null) {
         numSelected.classList.remove("number-selected");
     }
@@ -149,6 +165,10 @@ function startTimer() {
 }
 
 
+////////////////////////////////////////
+// Create Hide Timer button functions
+////////////////////////////////////////
+
 // Create Hide Timer button
 document.getElementById('hide-timer-button').addEventListener('click', function () {
     var timerDiv = document.getElementById('timer');
@@ -186,8 +206,9 @@ document.getElementById('hide-strategy-button').addEventListener('click', functi
 
 });
 
-
-// Highlighting Capabilities
+////////////////////////////////////////
+// Highlighting Capabilities functions
+////////////////////////////////////////
 // Add Highlighting to the board
 function highlight(event) {
     let cell = event.target;
@@ -217,14 +238,16 @@ function removeHighlight() {
 
 
 
+////////////////////////////////////////
+// Add dynamic superscript based on the number of remaining digits functions
+////////////////////////////////////////
 
-// Add dynamic superscript based on the number of remaining digits
-
+// Replace a character at a specific index in a string
 function replaceAt(string, index, replacement) {
     return string.substr(0, index) + replacement + string.substr(index + 1);
 }
 
-
+// Set the initial counts for each number
 function setInitialCounts() {
     const counts = getNumberCounts(board);
     for (let i = 1; i <= 9; i++) {
@@ -233,6 +256,8 @@ function setInitialCounts() {
     }
 }
 
+
+// Update the number count for a specific number
 function updateNumberCount(number) {
     console.log("updateNumberCount called with:", number);
     const counts = getNumberCounts(board);
@@ -243,6 +268,7 @@ function updateNumberCount(number) {
     updateNumberDisplay(number, remaining);
 }
 
+// Update the number display for a specific number
 function updateNumberDisplay(number, remaining) {
     const numberElement = document.getElementById(number.toString());
     if (numberElement) {
@@ -257,6 +283,7 @@ function updateNumberDisplay(number, remaining) {
     }
 }
 
+// Get the number counts for each number
 function getNumberCounts(board) {
     const counts = {
         '1': 0,
@@ -282,45 +309,69 @@ function getNumberCounts(board) {
 }
 
 
+////////////////////////////////////////
+// Generate a new Sudoku board functions
+////////////////////////////////////////
 
-function generateSudoku() {
-  const board = new Array(9).fill(null).map(() => new Array(9).fill(null));
-  
-  for (let row = 0; row < 9; row++) {
-    for (let col = 0; col < 9; col++) {
-      const numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9];
-      
-      while (numbers.length > 0) {
-        const randomIndex = Math.floor(Math.random() * numbers.length);
-        const number = numbers.splice(randomIndex, 1)[0];
-        
-        if (isValid(board, row, col, number)) {
-          board[row][col] = number;
-          break;
-        } else if (numbers.length === 0) {
-          // Reset and try again
-          return generateSudoku();
-        }
-      }
-    }
-  }
-  
-  return board;
-}
-
-function isValid(board, row, col, num) {
-  for (let x = 0; x < 9; x++) {
-    const ySquare = Math.floor(row / 3) * 3;
-    const xSquare = Math.floor(col / 3) * 3;
-    
-    if (board[row][x] === num || board[x][col] === num || board[ySquare + Math.floor(x / 3)][xSquare + (x % 3)] === num) {
-      return false;
-    }
-  }
-  
-  return true;
-}
 
 // Generate a new Sudoku board
-const sudokuBoard = generateSudoku();
-console.log(sudokuBoard);
+
+function generateSolution() {
+    const board = new Array(9).fill(null).map(() => new Array(9).fill(null));
+
+    for (let row = 0; row < 9; row++) {
+        for (let col = 0; col < 9; col++) {
+            const numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9];
+
+            while (numbers.length > 0) {
+                const randomIndex = Math.floor(Math.random() * numbers.length);
+                const number = numbers.splice(randomIndex, 1)[0];
+
+                if (isValid(board, row, col, number)) {
+                    board[row][col] = number;
+                    break;
+                } else if (numbers.length === 0) {
+                    // Reset and try again
+                    return generateSolution();
+                }
+            }
+        }
+    }
+
+    return board;
+}
+
+// Check if a number is valid in a specific position
+function isValid(board, row, col, num) {
+    for (let x = 0; x < 9; x++) {
+        const ySquare = Math.floor(row / 3) * 3;
+        const xSquare = Math.floor(col / 3) * 3;
+
+        if (board[row][x] === num || board[x][col] === num || board[ySquare + Math.floor(x / 3)][xSquare + (x % 3)] === num) {
+            return false;
+        }
+    }
+
+    return true;
+}
+
+// Generate a Sudoku puzzle from a solution
+function generatePuzzle(solution, clues) {
+    const puzzle = JSON.parse(JSON.stringify(solution)); // Deep copy of the solution
+    let removed = 81 - clues;
+
+    while (removed > 0) {
+        const row = Math.floor(Math.random() * 9);
+        const col = Math.floor(Math.random() * 9);
+
+        if (puzzle[row][col] !== null) {
+            puzzle[row][col] = "-";
+            removed--;
+        }
+    }
+
+    return puzzle;
+}
+
+
+
