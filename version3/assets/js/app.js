@@ -10,7 +10,7 @@ let numSelected = null;
 
 let errors = 0;
 
-const board = [
+let board = [
     "--74916-5",
     "2---6-3-9",
     "-----7-1-",
@@ -53,8 +53,8 @@ function setGame() {
     // Digits 1-9
     for (let i = 1; i <= 9; i++) {
         let number = document.createElement("div");
-        number.id = i;
-        number.innerHTML = i + '<sup>' + (9 - counts[i]) + '</sup>'; // display count as superscript
+         number.id = i;
+        number.innerHTML = '<p>' + i + '<sup>' + (9 - counts[i]) + '</sup>' + '<p>'; // display count as superscript
         number.addEventListener("click", selectNumber);
         number.classList.add("number");
         document.getElementById("digits").appendChild(number);
@@ -134,6 +134,7 @@ function selectTile() {
 
         if (solution[r][c] == numSelected.id) {
             this.innerText = numSelected.id;
+            board[r] = replaceAt(board[r], c, numSelected.id); // Update the board
             updateNumberCount(numSelected.id); // Decrease the count and update display
         } else {
             errors += 1;
@@ -238,21 +239,15 @@ function removeHighlight() {
 
 
 
-function getNumberCount() {
-    let counts = Array(10).fill(0); // Indexes 0 to 9 (0 won't be used)
-    for (let r = 0; r < 9; r++) {
-        for (let c = 0; c < 9; c++) {
-            const value = board[r][c];
-            if (value !== "-") {
-                counts[parseInt(value)]++;
-            }
-        }
-    }
-    return counts;
+
+
+function replaceAt(string, index, replacement) {
+    return string.substr(0, index) + replacement + string.substr(index + 1);
 }
 
+
 function setInitialCounts() {
-    const counts = getNumberCount();
+    const counts = getNumberCounts(board);
     for (let i = 1; i <= 9; i++) {
         const remaining = 9 - counts[i];
         updateNumberDisplay(i, remaining);
@@ -260,26 +255,29 @@ function setInitialCounts() {
 }
 
 function updateNumberCount(number) {
-    const counts = getNumberCount();
+    console.log("updateNumberCount called with:", number);
+    const counts = getNumberCounts(board);
     const newCount = counts[number] + 1;
     const remaining = 9 - newCount;
+
+    console.log("New count and remaining for number:", number, newCount, remaining);
     updateNumberDisplay(number, remaining);
 }
 
 function updateNumberDisplay(number, remaining) {
     const numberElement = document.getElementById(number.toString());
     if (numberElement) {
-        const superscript = numberElement.querySelector('.superscript');
+        const superscript = numberElement.querySelector('sup');
         if (superscript) {
             superscript.textContent = remaining;
         } else {
             const newSuperscript = document.createElement('sup');
-            newSuperscript.className = 'superscript';
             newSuperscript.textContent = remaining;
-            numberElement.appendChild(newSuperscript);
+            numberElement.querySelector('p').appendChild(newSuperscript);
         }
     }
 }
+
 
 
 function getNumberCounts(board) {

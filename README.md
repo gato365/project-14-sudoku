@@ -80,9 +80,10 @@ Here are the different versions and their associated features:
 ### Version 3 - Game Analysis Tools
 
 - [X] **Mouse highlight row and column ability**
-- [ ] **How many numbers are needed for each number**
+- [X] **How many numbers are needed for each number**
 
 ### Version 4 - Dynamic Game Generation
+- [ ] **New Game button**
 - [ ] **Generate different boards**
 - [ ] **Generate unique boards**
 
