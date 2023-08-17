@@ -83,6 +83,7 @@ Here are the different versions and their associated features:
 - [X] **How many numbers are needed for each number**
 
 ### Version 4 - Dynamic Game Generation
+
 - [ ] **New Game button**
 - [ ] **Generate different boards**
 - [ ] **Generate unique boards**
