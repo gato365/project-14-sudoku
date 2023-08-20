@@ -36,15 +36,29 @@ const solution = [
 
 
 window.onload = function () {
-    startTimer();
-    setGame();
+    // Initially hide the game
+    hideGame();
 
-    // Reattach the highlighting event listeners to the new cells
-    let cells = document.querySelectorAll('.cell');
-    cells.forEach(cell => {
-        cell.addEventListener('mouseenter', highlight);
-        cell.addEventListener('mouseleave', removeHighlight);
+    // Add event listener to the start button
+    document.getElementById('startGame').addEventListener('click', function () {
+        // Hide menu and show game
+        document.getElementById('menu').style.display = 'none';
+
+
+        startTimer();
+        setGame();
+        showGame();
+
+
+        // Reattach the highlighting event listeners to the new cells
+        let cells = document.querySelectorAll('.cell');
+        cells.forEach(cell => {
+            cell.addEventListener('mouseenter', highlight);
+            cell.addEventListener('mouseleave', removeHighlight);
+        });
     });
+
+    // For now, the difficulty buttons do nothing. Later, you can add event listeners to them.
 }
 
 function setGame() {
@@ -375,3 +389,16 @@ function generatePuzzle(solution, clues) {
 
 
 
+////////////////////////////////////////
+// Generates menu functionality functions
+////////////////////////////////////////
+
+function hideGame() {
+    // Assuming your game container has an ID of 'board'
+    document.getElementById('game').style.display = 'none';
+}
+
+function showGame() {
+    // Assuming your game container has an ID of 'board'
+    document.getElementById('game').style.display = 'block';
+}

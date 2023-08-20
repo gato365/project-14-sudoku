@@ -11,7 +11,22 @@
 </head>
 
 <body>
-    5<sup>2</sup>
+
+    <!-- This is the Game's Menu -->
+    <div id="menu">
+        <h2>Select Game Difficulty</h2>
+        <button class="difficulty" data-level="easy">Easy</button>
+        <button class="difficulty" data-level="medium">Medium</button>
+        <button class="difficulty" data-level="hard">Hard</button>
+        <button class="difficulty" data-level="expert">Expert</button>
+        <br>
+        <button id="startGame">Start Game</button>
+    </div>
+
+
+
+
+
     <h1>Sudoku</h1>
     <hr>
     <!-- Errors and timer section -->
@@ -20,26 +35,27 @@
         <div id="timer">Time: 00:00:00</div>
     </div>
 
-    <!-- Hide/show buttons -->
-    <div class="button-group">
-        <button class="button" id="hide-timer-button" >Hide Timer</button>
-        <button class="button" id="hide-strategy-button">Hide Strategy</button>
-    </div>
+    <div id="game">
+        <!-- Hide/show buttons -->
+        <div class="button-group">
+            <button class="button" id="hide-timer-button">Hide Timer</button>
+            <button class="button" id="hide-strategy-button">Hide Strategy</button>
+        </div>
 
-    <!-- Display 9x9 board -->
-    <div id="board"></div>
-    <br>
-    <!-- Display Digits  -->
-    <div id="digits">
+        <!-- Display 9x9 board -->
+        <div id="board"></div>
+        <br>
+        <!-- Display Digits  -->
+        <div id="digits"></div>
+        <div id="remaining-numbers"></div>
+        <!-- Strategy form -->
+        <form class="the-game" id="strategy-form">
+            <label for="strategy">Strategy:</label><br>
+            <textarea id="strategy" name="strategy" rows="4" cols="50"></textarea><br>
+            <input type="submit" value="Submit">
+            <button id="display-strategies">Display Strategies</button>
+        </form>
     </div>
-    <div id="remaining-numbers"></div>
-    <!-- Strategy form -->
-    <form class="the-game" id="strategy-form">
-        <label for="strategy">Strategy:</label><br>
-        <textarea id="strategy" name="strategy" rows="4" cols="50"></textarea><br>
-        <input type="submit" value="Submit">
-        <button id="display-strategies">Display Strategies</button>
-    </form>
 
 
     <!-- Scripts -->

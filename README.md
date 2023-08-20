@@ -86,16 +86,18 @@ Here are the different versions and their associated features:
 
 
 - [X] **Generate different boards**
-- [ ] **Generate different difficulties**
-    - [ ] Easy
-    - [ ] Medium
-    - [ ] Hard
-    - [ ] Expert
+- [X] **Generate different difficulties**
+    - [X] Easy
+    - [X] Medium
+    - [X] Hard
+    - [X] Expert
+- [ ] **Create Menu in which user can select level and start game**
 - [ ] **Incorporate board generation into the game**
+
 - [ ] **New Game button**
 
 ### Version 5 - Advanced Gameplay Features
-- [ ] **Create Difficulty**
+
 - [ ] **Save the data into database**
 - [ ] **Save strategies into database**
 
