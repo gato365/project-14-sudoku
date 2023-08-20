@@ -4,43 +4,69 @@ let seconds = 0;
 let minutes = 0;
 let hours = 0;
 var timerVisible = true;
-
+let selectedDifficulty = 'easy';  // default difficulty
+var solution;
 let numSelected = null;
 
 
 let errors = 0;
-
-let board = [
-    "--74916-5",
-    "2---6-3-9",
-    "-----7-1-",
-    "-586----4",
-    "--3----9-",
-    "--62--187",
-    "9-4-7---2",
-    "67-83----",
-    "81--45---"
-];
-
-const solution = [
-    "387491625",
-    "241568379",
-    "569327418",
-    "758619234",
-    "123784596",
-    "496253187",
-    "934176852",
-    "675832941",
-    "812945763"
-];
+let board;
 
 
 window.onload = function () {
+
+
     // Initially hide the game
     hideGame();
 
     // Add event listener to the start button
     document.getElementById('startGame').addEventListener('click', function () {
+
+
+        const difficultyButtons = document.querySelectorAll('.difficulty');
+        let selectedDifficulty = null;
+
+        for (let button of difficultyButtons) {
+            if (button.classList.contains('selected')) {  // Assuming the selected button has a class 'selected'
+                selectedDifficulty = button.getAttribute('data-level');
+                break;
+            }
+        }
+
+        if (!selectedDifficulty) {
+            alert("Please select a difficulty level before starting.");
+            return;
+        }
+
+        // Generate a new Sudoku board
+        solution = generateSolution();
+        // Generate a Sudoku puzzle from a solution based on the selected difficulty
+        let clues;
+        switch (selectedDifficulty) {
+            case 'easy':
+                clues = 35;
+                break;
+            case 'medium':
+                clues = 29;
+                break;
+            case 'hard':
+                clues = 24;
+                break;
+            case 'expert':
+                clues = 20;
+                break;
+        }
+        board = generatePuzzle(solution, clues);
+        console.log('Selected difficulty:', selectedDifficulty);
+        console.log('Generated puzzle:', board);
+        // I want to display the selected diffculty level using the id 'difficulty-level' based on the button clicked difficulty
+        
+        document.getElementById('difficulty-level').textContent = selectedDifficulty;
+        
+
+
+
+
         // Hide menu and show game
         document.getElementById('menu').style.display = 'none';
 
@@ -61,6 +87,11 @@ window.onload = function () {
     // For now, the difficulty buttons do nothing. Later, you can add event listeners to them.
 }
 
+////////////////////////////////////////
+// The Structure of the Sudoku Board
+////////////////////////////////////////
+
+// 9x9 grid and each cell can contain a number from 1-9
 function setGame() {
     const counts = getNumberCounts(board);
 
@@ -99,19 +130,7 @@ function setGame() {
     setInitialCounts();
 
 
-    // Generate a new Sudoku board
-    // Example usage
-    const solutionBoard = generateSolution();
-    const easyPuzzle = generatePuzzle(solutionBoard, 35);    // 35 clues for Easy difficulty
-    const mediumPuzzle = generatePuzzle(solutionBoard, 29);  // 29 clues for Medium difficulty
-    const hardPuzzle = generatePuzzle(solutionBoard, 24);    // 24 clues for Hard difficulty
-    const expertPuzzle = generatePuzzle(solutionBoard, 20);  // 20 clues for Expert difficulty
 
-    console.log('Solution:', solution);
-    console.log('Easy Puzzle:', easyPuzzle);
-    console.log('Medium Puzzle:', mediumPuzzle);
-    console.log('Hard Puzzle:', hardPuzzle);
-    console.log('Expert Puzzle:', expertPuzzle);
 
 }
 
@@ -122,12 +141,6 @@ function selectNumber() {
     numSelected = this;
     numSelected.classList.add("number-selected");
 }
-
-
-
-
-// Timer Related Functions
-// Update the timer div with the current time
 
 function selectTile() {
     if (numSelected) {
@@ -151,6 +164,13 @@ function selectTile() {
     }
     setInitialCounts();
 }
+
+
+////////////////////////////////////////
+// Timer Related Functions
+////////////////////////////////////////
+// Update the timer div with the current time
+
 
 
 
@@ -219,6 +239,18 @@ document.getElementById('hide-strategy-button').addEventListener('click', functi
 
 
 });
+
+
+
+
+
+
+
+
+
+
+
+
 
 ////////////////////////////////////////
 // Highlighting Capabilities functions
@@ -323,69 +355,8 @@ function getNumberCounts(board) {
 }
 
 
-////////////////////////////////////////
-// Generate a new Sudoku board functions
-////////////////////////////////////////
 
 
-// Generate a new Sudoku board
-
-function generateSolution() {
-    const board = new Array(9).fill(null).map(() => new Array(9).fill(null));
-
-    for (let row = 0; row < 9; row++) {
-        for (let col = 0; col < 9; col++) {
-            const numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9];
-
-            while (numbers.length > 0) {
-                const randomIndex = Math.floor(Math.random() * numbers.length);
-                const number = numbers.splice(randomIndex, 1)[0];
-
-                if (isValid(board, row, col, number)) {
-                    board[row][col] = number;
-                    break;
-                } else if (numbers.length === 0) {
-                    // Reset and try again
-                    return generateSolution();
-                }
-            }
-        }
-    }
-
-    return board;
-}
-
-// Check if a number is valid in a specific position
-function isValid(board, row, col, num) {
-    for (let x = 0; x < 9; x++) {
-        const ySquare = Math.floor(row / 3) * 3;
-        const xSquare = Math.floor(col / 3) * 3;
-
-        if (board[row][x] === num || board[x][col] === num || board[ySquare + Math.floor(x / 3)][xSquare + (x % 3)] === num) {
-            return false;
-        }
-    }
-
-    return true;
-}
-
-// Generate a Sudoku puzzle from a solution
-function generatePuzzle(solution, clues) {
-    const puzzle = JSON.parse(JSON.stringify(solution)); // Deep copy of the solution
-    let removed = 81 - clues;
-
-    while (removed > 0) {
-        const row = Math.floor(Math.random() * 9);
-        const col = Math.floor(Math.random() * 9);
-
-        if (puzzle[row][col] !== null) {
-            puzzle[row][col] = "-";
-            removed--;
-        }
-    }
-
-    return puzzle;
-}
 
 
 
@@ -401,4 +372,21 @@ function hideGame() {
 function showGame() {
     // Assuming your game container has an ID of 'board'
     document.getElementById('game').style.display = 'block';
+}
+
+////////////////////////////////////////
+// Difficulty Buttons function
+////////////////////////////////////////
+
+// Attach event listener to difficulty buttons
+const difficultyButtons = document.querySelectorAll('.difficulty');
+for (let button of difficultyButtons) {
+    button.addEventListener('click', function (e) {
+        // Get the difficulty level from the clicked button's data attribute
+        selectedDifficulty = e.target.getAttribute('data-level');
+
+        // Optionally: Add some visual feedback to show which difficulty is selected.
+        difficultyButtons.forEach(btn => btn.classList.remove('selected'));
+        button.classList.add('selected');
+    });
 }

@@ -91,7 +91,7 @@ Here are the different versions and their associated features:
     - [X] Medium
     - [X] Hard
     - [X] Expert
-- [ ] **Create Menu in which user can select level and start game**
+- [X] **Create Menu in which user can select level and start game**
 - [ ] **Incorporate board generation into the game**
 
 - [ ] **New Game button**
