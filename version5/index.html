@@ -1,0 +1,69 @@
+<!-- Create the template of html file but reference the js and css files in the directory -->
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0 user-scalable=no">
+    <title>Sudoku</title>
+    <link rel="stylesheet" href="assets/css/style.css" />
+
+</head>
+
+<body>
+
+    <!-- This is the Game's Menu -->
+    <div id="menu">
+        <h2>Select Game Difficulty</h2>
+        <button class="difficulty" data-level="easy">Easy</button>
+        <button class="difficulty" data-level="medium">Medium</button>
+        <button class="difficulty" data-level="hard">Hard</button>
+        <button class="difficulty" data-level="expert">Expert</button>
+        <br>
+        <button id="startGame">Start Game</button>
+    </div>
+
+
+
+
+
+    <h1>Sudoku</h1>
+    <hr>
+    <!-- Errors and timer section -->
+    <div class="header-info">
+        <h2 id="errors">Errors: 0</h2>
+        <div id="timer">Time: 00:00:00</div>
+    </div>
+
+    <div id="game">
+        <!-- Hide/show buttons -->
+        <div class="button-group">
+            <button class="button" id="hide-timer-button">Hide Timer</button>
+            <button class="button" id="hide-strategy-button">Hide Strategy</button>
+        </div>
+
+        <!-- Display 9x9 board -->
+        <div id="board"></div>
+        <br>
+        <!-- Display Digits  -->
+        <div id="digits"></div>
+        <div id="remaining-numbers"></div>
+        <!-- Strategy form -->
+        <form class="the-game" id="strategy-form">
+            <label for="strategy">Strategy:</label><br>
+            <textarea id="strategy" name="strategy" rows="4" cols="50"></textarea><br>
+            <input type="submit" value="Submit">
+            <button id="display-strategies">Display Strategies</button>
+        </form>
+        <!-- I want to display the selected diffculty level -->
+        <div id="difficulty-level"></div>
+    </div>
+
+
+    <!-- Scripts -->
+    <script src="assets/js/generateSudokuBoards.js"></script>
+    <script src="assets/js/app.js"></script>
+</body>
+
+
+</html>

@@ -92,9 +92,9 @@ Here are the different versions and their associated features:
     - [X] Hard
     - [X] Expert
 - [X] **Create Menu in which user can select level and start game**
-- [ ] **Incorporate board generation into the game**
+- [X] **Incorporate board generation into the game**
 
-- [ ] **New Game button**
+
 
 ### Version 5 - Advanced Gameplay Features
 
@@ -114,6 +114,7 @@ Here are the different versions and their associated features:
 - [ ] **Strategy effectiveness**
 - [ ] **Error tracking**
 - [ ] **Difficulty progression**
+- [ ] **New Game button**
 
 ## Feature Status Key
 
