@@ -1,37 +1,40 @@
 // Get Thoughts and User Models
-const { GameRecord } = require('../models');
+const { gameRecord } = require('../models');
 
 // Get GameRecord Model
 
 module.exports = {
     // Post a new game record
     createGameRecord(req, res) {
-        GameRecord.create(req.body)
+        gameRecord.create(req.body)
             .then((newGameRecord) => {
-                res.json(newGameRecord);
+                res.status(200).json(newGameRecord);
             })
             .catch((err) => {
-                res.json(err);
+                console.log(err);
+                res.status(500).json(err);
             });
     },
     // Get all game records
     getAllGameRecords(req, res) {
-        GameRecord.find({})
+        gameRecord.find({})
             .then((gameRecords) => {
-                res.json(gameRecords);
+                res.status(200).json(gameRecords);
             })
             .catch((err) => {
-                res.json(err);
+                console.log(err);
+                res.status(500).json(err);
             });
     },
     // Get a game record by id
     getGameRecordById(req, res) {
-        GameRecord.findById(req.params.id)
+        gameRecord.findById(req.params.id)
             .then((gameRecord) => {
-                res.json(gameRecord);
+                res.status(200).json(gameRecord);
             })
             .catch((err) => {
-                res.json(err);
+                console.log(err);
+                res.status(500).json(err);
             });
     }
 };

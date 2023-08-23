@@ -1,5 +1,5 @@
 // Bring in Relevant Models
-const GameRecord = require('./GameRecord');
+const gameRecord = require('./gameRecord');
 
 // Export Models
-module.exports = { GameRecord };
+module.exports = { gameRecord };

@@ -8,6 +8,6 @@ const gameRecordSchema = new Schema({
     strategies: String
 });
 
-const GameRecord = model('GameRecord', gameRecordSchema);
+const gameRecord = model('gameRecord', gameRecordSchema);
 
-module.exports = GameRecord;
+module.exports = gameRecord;

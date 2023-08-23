@@ -3,8 +3,8 @@ const router = require('express').Router();
 const gameRecordRoutes = require('./gameRecordRoutes');
 
 
-// add prefix of `/users` to routes created in `user-routes.js`
-router.use('/users', gameRecordRoutes);
+// add prefix of `/gameRecord` to routes created in `gameRecord.js`
+router.use('/gameRecord', gameRecordRoutes);
 
 
 module.exports = router;
