@@ -293,6 +293,9 @@ function displayGameStats() {
 
     // Display the game stats div
     document.getElementById('gameStats').style.display = 'block';
+    document.getElementById('board').style.display = 'none';
+    document.getElementById('digits').style.display = 'none';
+    document.getElementById('strategy-form').style.display = 'none';
 }
 
 
