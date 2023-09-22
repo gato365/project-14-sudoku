@@ -15,6 +15,7 @@ app.use(express.json());
 // Serve up static assets
 app.use(express.static('public'));
 
+// Use apiRoutes
 app.use(routes);
 
 // Serve up static assets
