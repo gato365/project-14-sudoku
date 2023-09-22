@@ -11,6 +11,10 @@ const app = express();
 // Express middleware
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
+
+// Serve up static assets
+app.use(express.static('public'));
+
 app.use(routes);
 
 // Serve up static assets
