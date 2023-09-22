@@ -44,7 +44,7 @@ window.onload = function () {
         let clues;
         switch (selectedDifficulty) {
             case 'easy':
-                clues = 35;
+                clues = 75;
                 break;
             case 'medium':
                 clues = 29;
@@ -60,9 +60,9 @@ window.onload = function () {
         console.log('Selected difficulty:', selectedDifficulty);
         console.log('Generated puzzle:', board);
         // I want to display the selected diffculty level using the id 'difficulty-level' based on the button clicked difficulty
-        
+
         document.getElementById('difficulty-level').textContent = selectedDifficulty;
-        
+
 
 
 
@@ -142,6 +142,17 @@ function selectNumber() {
     numSelected.classList.add("number-selected");
 }
 
+
+function isBoardComplete() {
+    for (let row of board) {
+        if (row.includes("-")) {
+            return false;  // Found an empty cell
+        }
+    }
+    return true;
+}
+
+
 function selectTile() {
     if (numSelected) {
         if (this.innerText != "") {
@@ -163,6 +174,15 @@ function selectTile() {
         }
     }
     setInitialCounts();
+
+    // For demonstration purposes, saving game data on each tile click
+    // Ideally, you should save this only once the game is finished
+    if (isBoardComplete()) {
+        const gameData = prepareGameData();
+        saveToLocalStorage(gameData);
+        clearInterval(timer);  // Stop the timer when the board is complete
+        alert('Game completed!');  // Optional: notify the user that they have completed the game
+    }
 }
 
 
@@ -170,11 +190,6 @@ function selectTile() {
 // Timer Related Functions
 ////////////////////////////////////////
 // Update the timer div with the current time
-
-
-
-
-
 
 function updateTimer() {
     let timerDiv = document.getElementById('timer');
@@ -243,12 +258,30 @@ document.getElementById('hide-strategy-button').addEventListener('click', functi
 
 
 
+////////////////////////////////////////
+// Saving Game Data functions
+////////////////////////////////////////
 
+// Prepare the game data to be saved
+function prepareGameData() {
+    const finishedTime = `${hours < 10 ? "0" + hours : hours}:${minutes < 10 ? "0" + minutes : minutes}:${seconds < 10 ? "0" + seconds : seconds}`;
+    const currentDate = new Date().toLocaleString(); // Current date and time
+    const gameData = {
+        level: selectedDifficulty,
+        finishedTime: finishedTime,
+        dateTime: currentDate,
+        errors: errors
+        // Add strategies here when implemented
+    };
+    return gameData;
+}
 
-
-
-
-
+// Save the game data to local storage
+function saveToLocalStorage(data) {
+    const savedGames = JSON.parse(localStorage.getItem('sudokuGames')) || [];
+    savedGames.push(data);
+    localStorage.setItem('sudokuGames', JSON.stringify(savedGames));
+}
 
 
 
