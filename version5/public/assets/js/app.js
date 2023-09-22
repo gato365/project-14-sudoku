@@ -181,7 +181,7 @@ function selectTile() {
         const gameData = prepareGameData();
         saveToLocalStorage(gameData);
         clearInterval(timer);  // Stop the timer when the board is complete
-        alert('Game completed!');  // Optional: notify the user that they have completed the game
+        displayGameStats(); // Display the game statistics
     }
 }
 
@@ -281,6 +281,18 @@ function saveToLocalStorage(data) {
     const savedGames = JSON.parse(localStorage.getItem('sudokuGames')) || [];
     savedGames.push(data);
     localStorage.setItem('sudokuGames', JSON.stringify(savedGames));
+}
+
+
+
+function displayGameStats() {
+    // Assuming the difficulty and time are globally available
+    document.getElementById('stats-difficulty').textContent = selectedDifficulty;
+    document.getElementById('stats-time').textContent = `${hours} hours, ${minutes} minutes, ${seconds} seconds`;
+    document.getElementById('stats-errors').textContent = errors;
+
+    // Display the game stats div
+    document.getElementById('gameStats').style.display = 'block';
 }
 
 
