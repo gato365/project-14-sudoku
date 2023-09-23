@@ -44,7 +44,7 @@ window.onload = function () {
         let clues;
         switch (selectedDifficulty) {
             case 'easy':
-                clues = 35;
+                clues = 80;
                 break;
             case 'medium':
                 clues = 29;
@@ -273,7 +273,7 @@ function prepareGameData() {
         errors: errors,
         strategies: 'd',
         dateTime: currentDate
-        
+
     };
     return gameData;
 }
@@ -304,6 +304,8 @@ function displayGameStats() {
 
 async function saveToDatabase(data) {
     try {
+
+
         const response = await fetch('/api/gameRecord', {
             method: 'POST',
             headers: {
@@ -312,7 +314,9 @@ async function saveToDatabase(data) {
             body: JSON.stringify(data)
         });
 
-        if (response.headers.get('content-type') === 'application/json') {
+        console.log("Received content-type:", response.headers.get('content-type'));
+
+        if (response.headers.get('content-type').includes('application/json')) {
             const result = await response.json();
             if (response.status === 200) {
                 console.log(result.message);
@@ -322,6 +326,8 @@ async function saveToDatabase(data) {
         } else {
             console.error("Unexpected response:", await response.text());
         }
+
+
     } catch (error) {
         console.error("There was an error saving the game:", error);
     }
