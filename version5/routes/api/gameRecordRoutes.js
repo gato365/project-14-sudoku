@@ -6,12 +6,12 @@ const {
     getGameRecordById
 } = require('../../controllers/gameController');
 
-// GET and POST at /api/gameRecord
-
+// gameRecordRoutes.js
 router.route('/').get(getAllGameRecords).post(createGameRecord);
-
-// GET one
 router.route('/:id').get(getGameRecordById);
 
 
 module.exports = router;
+
+
+

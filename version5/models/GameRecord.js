@@ -7,7 +7,7 @@ const gameRecordSchema = new Schema({
         enum: ['easy', 'medium', 'hard', 'expert']  // Ensure only these values are accepted
     },
     timeTaken: {
-        type: Number,  // Time in seconds
+        type: String,  // Time taken is a string because it will be formatted as MM:SS
         required: true
     },
     errors: {

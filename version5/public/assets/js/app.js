@@ -44,7 +44,7 @@ window.onload = function () {
         let clues;
         switch (selectedDifficulty) {
             case 'easy':
-                clues = 75;
+                clues = 35;
                 break;
             case 'medium':
                 clues = 29;
@@ -152,7 +152,7 @@ function isBoardComplete() {
     return true;
 }
 
-
+// Replace a character at a specific index in a string
 function selectTile() {
     if (numSelected) {
         if (this.innerText != "") {
@@ -180,6 +180,7 @@ function selectTile() {
     if (isBoardComplete()) {
         const gameData = prepareGameData();
         saveToLocalStorage(gameData);
+        saveToDatabase(gameData);
         clearInterval(timer);  // Stop the timer when the board is complete
         displayGameStats(); // Display the game statistics
     }
@@ -264,14 +265,15 @@ document.getElementById('hide-strategy-button').addEventListener('click', functi
 
 // Prepare the game data to be saved
 function prepareGameData() {
-    const finishedTime = `${hours < 10 ? "0" + hours : hours}:${minutes < 10 ? "0" + minutes : minutes}:${seconds < 10 ? "0" + seconds : seconds}`;
+    const timeTaken = `${hours < 10 ? "0" + hours : hours}:${minutes < 10 ? "0" + minutes : minutes}:${seconds < 10 ? "0" + seconds : seconds}`;
     const currentDate = new Date().toLocaleString(); // Current date and time
     const gameData = {
         level: selectedDifficulty,
-        finishedTime: finishedTime,
-        dateTime: currentDate,
-        errors: errors
-        // Add strategies here when implemented
+        timeTaken: timeTaken,
+        errors: errors,
+        strategies: 'd',
+        dateTime: currentDate
+        
     };
     return gameData;
 }
@@ -299,6 +301,31 @@ function displayGameStats() {
 }
 
 
+
+async function saveToDatabase(data) {
+    try {
+        const response = await fetch('/api/gameRecord', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(data)
+        });
+
+        if (response.headers.get('content-type') === 'application/json') {
+            const result = await response.json();
+            if (response.status === 200) {
+                console.log(result.message);
+            } else {
+                console.error("Error saving game:", result.message);
+            }
+        } else {
+            console.error("Unexpected response:", await response.text());
+        }
+    } catch (error) {
+        console.error("There was an error saving the game:", error);
+    }
+}
 
 ////////////////////////////////////////
 // Highlighting Capabilities functions
