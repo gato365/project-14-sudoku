@@ -81,6 +81,7 @@ Here are the different versions and their associated features:
 
 - [X] **Mouse highlight row and column ability**
 - [X] **How many numbers are needed for each number**
+- [X] **Don't show board until the user clicks the "Start Game" button**
 
 ### Version 4 - Dynamic Game Generation
 
@@ -103,18 +104,52 @@ Here are the different versions and their associated features:
 
 ### Version 6 - Competitive Features
 - [ ] **Create a scoring mechanism**
-- [ ] **Create a leaderboard**
-- [ ] **Make it into an apple app**
-- [ ] **Don't show board until the user clicks the "Start Game" button**
+- ❌ **Create a leaderboard**
+- ❌ **Make it into an apple app**
 
-### Version 7 - Progress and Performance Analysis
-- [ ] **Progress Tracker**
-- [ ] **Performance Metrics**
-- [ ] **Learning curve analysis**
-- [ ] **Strategy effectiveness**
-- [ ] **Error tracking**
-- [ ] **Difficulty progression**
-- [ ] **New Game button**
+### Version 7 - Scoreboard Enhancements
+
+- [ ] **In-game Scoreboard Integration**
+    - [ ] Option to view the scoreboard at the beginning of the game.
+    - [ ] Display details on the scoreboard:
+        - [ ] Date
+        - [ ] Level
+        - [ ] Time
+        - [ ] Errors
+
+    - [ ] Format Scoreboard:
+        - [ ] Display in table format.
+        - [ ] Ability to filter based on the Level.
+
+### Version 8 - Game Analysis & Visualization
+
+- [ ] **Data Visualization**
+    - [ ] Plot the data of time to complete, with average.
+    - [ ] Graph representation of the missing numbers based on the level.
+
+- [ ] **Interactive UI Elements**
+    - [ ] Highlighting difficulty buttons (easy, medium, hard, expert) that were not clicked.
+    - [ ] Differentiate color for correctly selected squares.
+
+### Version 9 - Code Refactor & Modularization
+
+- [ ] **Splitting Application**
+    - [ ] Break down the app into multiple files.
+    - [ ] Define what should be in each file.
+
+- [ ] **HTML File Organization**
+    - [ ] Determine the order of file inclusion in the HTML.
+    - [ ] Ensure dependencies are managed appropriately.
+
+
+### Version 10 - Progress and Performance Analysis
+- ❌ **Progress Tracker**
+- ❌ **Performance Metrics**
+- ❌ **Learning curve analysis**
+- ❌ **Strategy effectiveness**
+- ❌ **Error tracking**
+- ❌ **Difficulty progression**
+- ❌ **New Game button**
 
 ## Feature Status Key
 
