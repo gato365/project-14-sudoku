@@ -98,8 +98,8 @@ Here are the different versions and their associated features:
 
 ### Version 5 - Advanced Gameplay Features
 
-- [ ] **Save the data into database**
-- [ ] **Save strategies into database**
+- [X] **Save the data into database**
+- ❌ **Save strategies into database**
 
 ### Version 6 - Competitive Features
 - [ ] **Create a scoring mechanism**
