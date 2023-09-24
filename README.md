@@ -102,12 +102,10 @@ Here are the different versions and their associated features:
 - [X] **Save the data into database**
 - ❌ **Save strategies into database**
 
-### Version 6 - Competitive Features
-- [ ] **Create a scoring mechanism**
-- ❌ **Create a leaderboard**
-- ❌ **Make it into an apple app**
 
-### Version 7 - Scoreboard Enhancements
+
+
+### Version 6 - Scoreboard Enhancements
 
 - [ ] **In-game Scoreboard Integration**
     - [ ] Option to view the scoreboard at the beginning of the game.
@@ -121,7 +119,7 @@ Here are the different versions and their associated features:
         - [ ] Display in table format.
         - [ ] Ability to filter based on the Level.
 
-### Version 8 - Game Analysis & Visualization
+### Version 7 - Game Analysis & Visualization
 
 - [ ] **Data Visualization**
     - [ ] Plot the data of time to complete, with average.
@@ -131,7 +129,7 @@ Here are the different versions and their associated features:
     - [ ] Highlighting difficulty buttons (easy, medium, hard, expert) that were not clicked.
     - [ ] Differentiate color for correctly selected squares.
 
-### Version 9 - Code Refactor & Modularization
+### Version 8 - Code Refactor & Modularization
 
 - [ ] **Splitting Application**
     - [ ] Break down the app into multiple files.
@@ -142,7 +140,7 @@ Here are the different versions and their associated features:
     - [ ] Ensure dependencies are managed appropriately.
 
 
-### Version 10 - Progress and Performance Analysis
+### Version 9 - Progress and Performance Analysis
 - ❌ **Progress Tracker**
 - ❌ **Performance Metrics**
 - ❌ **Learning curve analysis**

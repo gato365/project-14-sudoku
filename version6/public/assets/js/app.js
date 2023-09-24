@@ -471,3 +471,73 @@ for (let button of difficultyButtons) {
         button.classList.add('selected');
     });
 }
+
+
+
+
+
+
+
+
+////////////////////////////////////////
+// Get Information from database functions
+////////////////////////////////////////
+
+// Display the scores on the frontend
+document.getElementById('scoreboard').addEventListener('click', async () => {
+    try {
+        
+
+        // Remove style none from scoreboard
+        document.getElementById('scoreboard').style.display = 'block';
+        const response = await fetch('/api/gameRecord');
+        const data = await response.json();
+        displayScores(data.scores); // Function to display the scores on the frontend
+    } catch (error) {
+        console.error("Error fetching scores:", error);
+    }
+});
+
+
+// Display the scores on the frontend
+function displayScores(scores) {
+
+    // Create a table
+    const table = document.createElement('table');
+    const thead = document.createElement('thead');
+    const tbody = document.createElement('tbody');
+
+    // Create and append headers to the table
+    const headers = ['Date', 'Level', 'Time', 'Errors', 'Strategies'];
+    const headerRow = document.createElement('tr');
+    headers.forEach(header => {
+        const th = document.createElement('th');
+        th.textContent = header;
+        headerRow.appendChild(th);
+    });
+    thead.appendChild(headerRow);
+    table.appendChild(thead);
+
+    // Loop through scores and populate the table body
+    scores.forEach(score => {
+        const row = document.createElement('tr');
+
+        // Extract and format the date from the dateTime
+        const date = new Date(score.dateTime.$date).toLocaleDateString();
+        [date, score.level, score.timeTaken, score.errors, score.strategies].forEach(cellData => {
+            const td = document.createElement('td');
+            td.textContent = cellData;
+            row.appendChild(td);
+        });
+
+        tbody.appendChild(row);
+    });
+
+    table.appendChild(tbody);
+
+    // Append the table to a container in your HTML or replace an existing table
+    const container = document.getElementById('scoresContainer');
+    // Clear any previous content in the container
+    container.innerHTML = '';
+    container.appendChild(table);
+}

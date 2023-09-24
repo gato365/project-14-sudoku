@@ -16,7 +16,7 @@ module.exports = {
     async getAllGameRecords(req, res) {
         try {
             const gameRecords = await gameRecord.find({});
-            res.status(200).json({ message: 'Fetched all game records successfully.', data: gameRecords });
+            res.status(200).json({ message: 'Fetched all game records successfully.', scores: gameRecords });
         } catch (err) {
             console.log(err);
             res.status(500).json({ message: 'Error fetching game records.', error: err });
