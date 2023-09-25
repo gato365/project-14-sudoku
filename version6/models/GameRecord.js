@@ -22,6 +22,10 @@ const gameRecordSchema = new Schema({
         type: Date,
         required: true,
         default: Date.now  // Default to current date and time
+    },
+    numberOfClues: {
+        type: Number,
+        required: true
     }
 });
 

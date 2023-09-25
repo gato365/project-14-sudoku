@@ -11,7 +11,11 @@ let numSelected = null;
 
 let errors = 0;
 let board;
+let clues
 
+function getRandomInt(min, max) {
+    return Math.floor(Math.random() * (max - min + 1)) + min;
+}
 
 window.onload = function () {
 
@@ -41,21 +45,23 @@ window.onload = function () {
         // Generate a new Sudoku board
         solution = generateSolution();
         // Generate a Sudoku puzzle from a solution based on the selected difficulty
-        let clues;
+      
+    
         switch (selectedDifficulty) {
             case 'easy':
-                clues = 80;
+                clues = getRandomInt(75, 80); // Let's assume 75 to 80 for easy
                 break;
             case 'medium':
-                clues = 29;
+                clues = getRandomInt(26, 29); // 26 to 29 for medium
                 break;
             case 'hard':
-                clues = 24;
+                clues = getRandomInt(21, 24); // 21 to 24 for hard
                 break;
             case 'expert':
-                clues = 20;
+                clues = getRandomInt(17, 20); // 17 to 20 for expert
                 break;
         }
+        
         board = generatePuzzle(solution, clues);
         console.log('Selected difficulty:', selectedDifficulty);
         console.log('Generated puzzle:', board);
@@ -272,7 +278,8 @@ function prepareGameData() {
         timeTaken: timeTaken,
         errors: errors,
         strategies: 'd',
-        dateTime: currentDate
+        dateTime: currentDate,
+        numberOfClues: clues
 
     };
     return gameData;
@@ -486,17 +493,26 @@ for (let button of difficultyButtons) {
 // Display the scores on the frontend
 document.getElementById('scoreboard').addEventListener('click', async () => {
     try {
-  
+        const scoresContainer = document.getElementById('scoresContainer');
+        const button = document.getElementById('scoreboard');
 
-        // Remove style none from scoreboard
-        document.getElementById('scoresContainer').style.display = 'block';
-        const response = await fetch('/api/gameRecord');
-        const data = await response.json();
-        displayScores(data.scores); // Function to display the scores on the frontend
+        if (scoresContainer.style.display === 'block') {
+            // If the scoreboard is currently shown, hide it and change the button text
+            scoresContainer.style.display = 'none';
+            button.textContent = 'View Scoreboard';
+        } else {
+            // If the scoreboard is hidden, show it, fetch the scores, and change the button text
+            scoresContainer.style.display = 'block';
+            const response = await fetch('/api/gameRecord');
+            const data = await response.json();
+            displayScores(data.scores); // Function to display the scores on the frontend
+            button.textContent = 'Hide Scoreboard';
+        }
     } catch (error) {
         console.error("Error fetching scores:", error);
     }
 });
+
 
 
 // Display the scores on the frontend
@@ -509,7 +525,7 @@ function displayScores(scores) {
     const tbody = document.createElement('tbody');
 
     // Create and append headers to the table
-    const headers = ['Date', 'Level', 'Time', 'Errors', 'Strategies'];
+    const headers = ['Date', 'Level', 'Time', 'Errors', 'Strategies','Number of Clues'];
     const headerRow = document.createElement('tr');
     headers.forEach(header => {
         const th = document.createElement('th');
@@ -530,7 +546,7 @@ function displayScores(scores) {
 
         console.log("date", score.dateTime);
 
-        [date, score.level, score.timeTaken, score.errors, score.strategies].forEach(cellData => {
+        [date, score.level, score.timeTaken, score.errors, score.strategies, score.numberOfClues].forEach(cellData => {
             const td = document.createElement('td');
             td.textContent = cellData;
             row.appendChild(td);
