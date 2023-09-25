@@ -486,7 +486,7 @@ for (let button of difficultyButtons) {
 // Display the scores on the frontend
 document.getElementById('scoreboard').addEventListener('click', async () => {
     try {
-        
+
 
         // Remove style none from scoreboard
         document.getElementById('scoresContainer').style.display = 'block';
@@ -524,8 +524,11 @@ function displayScores(scores) {
         const row = document.createElement('tr');
 
         // Extract and format the date from the dateTime
-        const date = new Date(score.dateTime.$date).toLocaleDateString();
-        
+        // Extract and format the date from the dateTime
+        const dateObj = new Date(score.dateTime.$date);
+        const date = dateObj.toString() !== "Invalid Date" ? dateObj.toLocaleDateString() : "Unknown Date";
+
+
         [date, score.level, score.timeTaken, score.errors, score.strategies].forEach(cellData => {
             const td = document.createElement('td');
             td.textContent = cellData;
