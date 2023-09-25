@@ -489,7 +489,7 @@ document.getElementById('scoreboard').addEventListener('click', async () => {
         
 
         // Remove style none from scoreboard
-        document.getElementById('scoreboard').style.display = 'block';
+        document.getElementById('scoresContainer').style.display = 'block';
         const response = await fetch('/api/gameRecord');
         const data = await response.json();
         displayScores(data.scores); // Function to display the scores on the frontend
@@ -500,6 +500,7 @@ document.getElementById('scoreboard').addEventListener('click', async () => {
 
 
 // Display the scores on the frontend
+
 function displayScores(scores) {
 
     // Create a table
@@ -524,6 +525,7 @@ function displayScores(scores) {
 
         // Extract and format the date from the dateTime
         const date = new Date(score.dateTime.$date).toLocaleDateString();
+        
         [date, score.level, score.timeTaken, score.errors, score.strategies].forEach(cellData => {
             const td = document.createElement('td');
             td.textContent = cellData;

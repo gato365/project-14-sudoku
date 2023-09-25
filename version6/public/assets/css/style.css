@@ -1,6 +1,10 @@
 body {
     font-family: Arial, Helvetica, sans-serif;
     text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
 }
 
 hr {
@@ -76,4 +80,27 @@ hr {
 .highlighted {
     background-color: #cfcb8d;  /* Change this to whatever color you want */
     /* background transperancy */
+}
+
+
+table {
+    border-collapse: collapse;
+    width: 100%;
+}
+
+table, th, td {
+    border: 1px solid black;
+}
+
+th, td {
+    padding: 8px;
+    text-align: left;
+}
+
+
+
+
+#scoresContainer {
+    width: 80%; /* or whatever width you prefer */
+    overflow: auto;
 }
