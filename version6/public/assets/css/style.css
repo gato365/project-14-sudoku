@@ -1,10 +1,9 @@
 body {
     font-family: Arial, Helvetica, sans-serif;
     text-align: center;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
+    background-color: #f4f4f4;
+    margin: 0;
+    padding: 0;
 }
 
 hr {
@@ -83,18 +82,29 @@ hr {
 }
 
 
-table {
-    border-collapse: collapse;
-    width: 100%;
-}
 
-table, th, td {
-    border: 1px solid black;
+
+/* Table Styles */
+table {
+    margin: 20px auto; /* Centers the table horizontally */
+    width: 80%; /* or whatever width fits your design */
+    border-collapse: collapse; /* Ensures borders are combined */
+    background-color: #ffffff; /* Gives the table a solid white background */
+    box-shadow: 0px 0px 10px rgba(0,0,0,0.1); /* Adds a subtle shadow to lift the table a bit */
 }
 
 th, td {
-    padding: 8px;
-    text-align: left;
+    border: 1px solid #ddd; /* Adds a light border around table cells */
+    padding: 10px 15px; /* Puts some space around the cell content */
+}
+
+th {
+    background-color: #f2f2f2; /* A light gray background for headers */
+    text-align: center; /* Center-aligns the headers */
+}
+
+td {
+    text-align: left; /* Left-aligns the cell contents */
 }
 
 
