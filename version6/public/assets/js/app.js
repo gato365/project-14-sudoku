@@ -563,3 +563,54 @@ function displayScores(scores) {
     container.innerHTML = '';
     container.appendChild(table);
 }
+
+
+
+
+
+////////////////////////////////////////
+// Plot the data functions
+////////////////////////////////////////
+// Assuming data is an array of game records like you provided
+const cluesData = data.map(record => record.level === 'easy' ? 80 : 
+                                 record.level === 'medium' ? 29 :
+                                 record.level === 'hard' ? 24 : 20);
+
+const timeData = data.map(record => {
+    const timeParts = record.timeTaken.split(':');
+    // Convert time to seconds for a continuous scale
+    return parseInt(timeParts[0], 10) * 60 + parseInt(timeParts[1], 10);
+});
+
+const ctx = document.getElementById('cluesVsTimeChart').getContext('2d');
+
+new Chart(ctx, {
+    type: 'scatter',
+    data: {
+        datasets: [{
+            label: 'Clues vs Time',
+            data: cluesData.map((clue, index) => ({ x: clue, y: timeData[index] })),
+            backgroundColor: 'rgba(75, 192, 192, 0.2)',
+            borderColor: 'rgba(75, 192, 192, 1)',
+            borderWidth: 1
+        }]
+    },
+    options: {
+        scales: {
+            x: {
+                beginAtZero: true,
+                title: {
+                    display: true,
+                    text: 'Number of Clues'
+                }
+            },
+            y: {
+                beginAtZero: true,
+                title: {
+                    display: true,
+                    text: 'Time (in seconds)'
+                }
+            }
+        }
+    }
+});
