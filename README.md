@@ -108,16 +108,18 @@ Here are the different versions and their associated features:
 ### Version 6 - Scoreboard Enhancements
 
 - [ ] **In-game Scoreboard Integration**
-    - [ ] Option to view the scoreboard at the beginning of the game.
-    - [ ] Display details on the scoreboard:
-        - [ ] Date
-        - [ ] Level
-        - [ ] Time
-        - [ ] Errors
+    - [X] Option to view the scoreboard at the beginning of the game.
+    - [X] Display details on the scoreboard:
+        - [X] Date
+        - [X] Level
+        - [X] Time
+        - [X] Errors
+        - [X] Strategies
+        - [X] Number of
 
-    - [ ] Format Scoreboard:
-        - [ ] Display in table format.
-        - [ ] Ability to filter based on the Level.
+    - [X] Format Scoreboard:
+        - [X] Display in table format.
+        - [X] Ability to filter based on the Level.
 
 ### Version 7 - Game Analysis & Visualization
 

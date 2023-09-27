@@ -49,7 +49,7 @@ window.onload = function () {
     
         switch (selectedDifficulty) {
             case 'easy':
-                clues = getRandomInt(75, 80); // Let's assume 75 to 80 for easy
+                clues = getRandomInt(30, 40); // Let's assume 75 to 80 for easy
                 break;
             case 'medium':
                 clues = getRandomInt(26, 29); // 26 to 29 for medium
