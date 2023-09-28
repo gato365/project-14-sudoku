@@ -3,7 +3,7 @@
 ////////////////////////////////////////
 
 
-
+ 
 // Generate a new Sudoku board
 
 function generateSolution() {

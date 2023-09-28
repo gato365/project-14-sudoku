@@ -491,27 +491,29 @@ for (let button of difficultyButtons) {
 ////////////////////////////////////////
 
 // Display the scores on the frontend
-document.getElementById('scoreboard').addEventListener('click', async () => {
+document.getElementById('scoreboardButton').addEventListener('click', async () => {
     try {
-        const scoresContainer = document.getElementById('scoresContainer');
-        const button = document.getElementById('scoreboard');
+        const scoreTable = document.getElementById('scoresTable');
+        const button = document.getElementById('scoreboardButton');
 
-        if (scoresContainer.style.display === 'block') {
+        console.log("Button CLicked");
+        if (scoreTable.style.display === 'block') {
             // If the scoreboard is currently shown, hide it and change the button text
-            scoresContainer.style.display = 'none';
+            scoreTable.style.display = 'none';
             button.textContent = 'View Scoreboard';
         } else {
             // If the scoreboard is hidden, show it, fetch the scores, and change the button text
-            scoresContainer.style.display = 'block';
+            scoreTable.style.display = 'block';
             const response = await fetch('/api/gameRecord');
             const data = await response.json();
             displayScores(data.scores); // Function to display the scores on the frontend
             button.textContent = 'Hide Scoreboard';
-        }
+        } 
     } catch (error) {
         console.error("Error fetching scores:", error);
     }
 });
+
 
 
 
