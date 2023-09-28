@@ -172,6 +172,7 @@ function selectTile() {
 
         if (solution[r][c] == numSelected.id) {
             this.innerText = numSelected.id;
+            this.style.color = "green"; // Set the color to green for correct entries
             board[r] = replaceAt(board[r], c, numSelected.id); // Update the board
             updateNumberCount(numSelected.id); // Decrease the count and update display
         } else {
