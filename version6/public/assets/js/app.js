@@ -27,9 +27,27 @@ window.onload = function () {
     document.getElementById('startGame').addEventListener('click', function () {
 
 
+
+
+
         const difficultyButtons = document.querySelectorAll('.difficulty');
         let selectedDifficulty = null;
 
+
+
+        // Add click event listener to each button
+        difficultyButtons.forEach(button => {
+            button.addEventListener('click', function () {
+                // Remove selected class from all buttons
+                difficultyButtons.forEach(btn => btn.classList.remove('selected'));
+
+                // Add selected class to the clicked button
+                this.classList.add('selected');
+            });
+        });
+
+
+        // Get the selected difficulty level
         for (let button of difficultyButtons) {
             if (button.classList.contains('selected')) {  // Assuming the selected button has a class 'selected'
                 selectedDifficulty = button.getAttribute('data-level');
@@ -45,8 +63,8 @@ window.onload = function () {
         // Generate a new Sudoku board
         solution = generateSolution();
         // Generate a Sudoku puzzle from a solution based on the selected difficulty
-      
-    
+
+
         switch (selectedDifficulty) {
             case 'easy':
                 clues = getRandomInt(30, 40); // Let's assume 75 to 80 for easy
@@ -61,7 +79,7 @@ window.onload = function () {
                 clues = getRandomInt(17, 20); // 17 to 20 for expert
                 break;
         }
-        
+
         board = generatePuzzle(solution, clues);
         console.log('Selected difficulty:', selectedDifficulty);
         console.log('Generated puzzle:', board);
@@ -509,7 +527,7 @@ document.getElementById('scoreboardButton').addEventListener('click', async () =
             const data = await response.json();
             displayScores(data.scores); // Function to display the scores on the frontend
             button.textContent = 'Hide Scoreboard';
-        } 
+        }
     } catch (error) {
         console.error("Error fetching scores:", error);
     }
@@ -528,7 +546,7 @@ function displayScores(scores) {
     const tbody = document.createElement('tbody');
 
     // Create and append headers to the table
-    const headers = ['Date', 'Level', 'Time', 'Errors', 'Strategies','Number of Clues'];
+    const headers = ['Date', 'Level', 'Time', 'Errors', 'Strategies', 'Number of Clues'];
     const headerRow = document.createElement('tr');
     headers.forEach(header => {
         const th = document.createElement('th');
@@ -543,7 +561,7 @@ function displayScores(scores) {
         const row = document.createElement('tr');
 
         // Extract and format the date from the dateTime
-        
+
         const dateObj = new Date(score.dateTime);
         const date = dateObj.toString() !== "Invalid Date" ? dateObj.toLocaleDateString() : "Unknown Date";
 
@@ -575,9 +593,9 @@ function displayScores(scores) {
 // Plot the data functions
 ////////////////////////////////////////
 // Assuming data is an array of game records like you provided
-const cluesData = data.map(record => record.level === 'easy' ? 80 : 
-                                 record.level === 'medium' ? 29 :
-                                 record.level === 'hard' ? 24 : 20);
+const cluesData = data.map(record => record.level === 'easy' ? 80 :
+    record.level === 'medium' ? 29 :
+        record.level === 'hard' ? 24 : 20);
 
 const timeData = data.map(record => {
     const timeParts = record.timeTaken.split(':');

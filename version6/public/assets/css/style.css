@@ -119,3 +119,9 @@ td {
     width: 80%; /* or whatever width you prefer */
     overflow: auto;
 }
+
+
+.selected {
+    background-color: #007BFF;  /* Change to your desired color */
+    color: white;
+}

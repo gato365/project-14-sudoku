@@ -127,9 +127,9 @@ Here are the different versions and their associated features:
     - [ ] Plot the data of time to complete, with average.
     - [ ] Graph representation of the missing numbers based on the level.
 
-- [ ] **Interactive UI Elements**
-    - [ ] Highlighting difficulty buttons (easy, medium, hard, expert) that were not clicked.
-    - [ ] Differentiate color for correctly selected squares.
+- [X] **Interactive UI Elements**
+    - [X] Highlighting difficulty buttons (easy, medium, hard, expert) that were not clicked.
+    - [X] Differentiate color for correctly selected squares.
 
 ### Version 8 - Code Refactor & Modularization
 
