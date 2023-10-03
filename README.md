@@ -124,7 +124,7 @@ Here are the different versions and their associated features:
 ### Version 7 - Game Analysis & Visualization
 
 - [ ] **Data Visualization**
-    - [ ] Plot the data of time to complete, with average.
+    - [X] Plot the data of time to complete, with average.
     - [ ] Graph representation of the missing numbers based on the level.
 
 - [X] **Interactive UI Elements**

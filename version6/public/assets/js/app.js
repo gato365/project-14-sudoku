@@ -512,7 +512,7 @@ for (let button of difficultyButtons) {
 // Display the scores on the frontend
 document.getElementById('scoreboardButton').addEventListener('click', async () => {
     try {
-        const scoreTable = document.getElementById('scoresTable');
+        const scoreTable = document.getElementById('scoresTable'); 
         const button = document.getElementById('scoreboardButton');
 
         console.log("Button CLicked");
@@ -583,6 +583,78 @@ function displayScores(scores) {
     // Clear any previous content in the container
     container.innerHTML = '';
     container.appendChild(table);
+
+
+
+
+    // Render the scatter plot 
+    // Extract clues and time data from scores for the scatter plot
+    const cluesData = scores.map(score => score.numberOfClues);
+    const timeData = scores.map(score => {
+        const timeParts = score.timeTaken.split(':');
+        return parseInt(timeParts[0], 10) * 60 + parseInt(timeParts[1], 10);  // Convert MM:SS to seconds
+    });
+
+    // Render the scatter plot
+    const ctx = document.getElementById('cluesVsTimeChart').getContext('2d');
+  new Chart(ctx, {
+    type: 'scatter',
+    data: {
+        datasets: [{
+            label: 'Clues vs Time',
+            data: cluesData.map((clue, index) => ({ x: clue, y: timeData[index] })),
+            fontSize: 40,
+            backgroundColor: 'black',   // Making the point color black
+            borderColor: 'black',       // Making the border color of the point black
+            borderWidth: 1,
+            pointRadius: 5              // Increase point size
+        }]
+    },
+    options: {
+        responsive: true,
+        title: {
+            display: true,
+            text: 'Scatter Plot of Clues vs Time',
+            fontSize: 40,               // Increase title size
+            padding: 20,                // Some padding to make it look nicer
+            align: 'center'             // Ensure the title is centered
+        },
+        tooltips: {
+            callbacks: {
+                title: function(tooltipItem, data) {
+                    // Custom title for tooltip on hover
+                    return `Point (${tooltipItem[0].xLabel}, ${tooltipItem[0].yLabel})`;
+                },
+                label: function(tooltipItem, data) {
+                    // Here you can customize the tooltip stats further if needed
+                    return `${tooltipItem.xLabel} Clues, ${tooltipItem.yLabel} seconds`;
+                }
+            }
+        },
+        scales: {
+            x: {
+                beginAtZero: true,
+                title: {
+                    display: true,
+                    text: 'Number of Clues',
+                    fontSize: 30,          // Adjust x-axis title size
+                    align: 'center'        // Center the x-axis title
+                }
+            },
+            y: {
+                beginAtZero: true,
+                title: {
+                    display: true,
+                    text: 'Time (in seconds)',
+                    fontSize: 30,          // Adjust y-axis title size
+                    align: 'center'        // Center the y-axis title
+                }
+            }
+        }
+    }
+});
+
+
 }
 
 
