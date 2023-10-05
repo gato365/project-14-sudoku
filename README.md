@@ -123,19 +123,24 @@ Here are the different versions and their associated features:
 
 ### Version 7 - Game Analysis & Visualization
 
-- [ ] **Data Visualization**
+- [X] **Data Visualization**
     - [X] Plot the data of time to complete, with average.
-    - [ ] Graph representation of the missing numbers based on the level.
+    - [X] Graph representation of data
 
 - [X] **Interactive UI Elements**
     - [X] Highlighting difficulty buttons (easy, medium, hard, expert) that were not clicked.
     - [X] Differentiate color for correctly selected squares.
 
+
+
+
+
+
 ### Version 8 - Code Refactor & Modularization
 
-- [ ] **Splitting Application**
-    - [ ] Break down the app into multiple files.
-    - [ ] Define what should be in each file.
+- [X] **Splitting Application**
+    - [X] Break down the app into multiple files.
+    - [X] Define what should be in each file.
 
 - [ ] **HTML File Organization**
     - [ ] Determine the order of file inclusion in the HTML.
