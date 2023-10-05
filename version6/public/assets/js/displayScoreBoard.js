@@ -2,31 +2,48 @@
 // Get Information from database functions
 ////////////////////////////////////////
 
-// Display the scores on the frontend
 document.getElementById('scoreboardButton').addEventListener('click', async () => {
     try {
-        const scoreTable = document.getElementById('scoresTable'); 
+        const scoresContainer = document.getElementById('scoresContainer');
         const button = document.getElementById('scoreboardButton');
+        const chartCanvas = document.getElementById('cluesVsTimeChart');
 
-        console.log("Button CLicked");
-        if (scoreTable.style.display === 'block') {
-            // If the scoreboard is currently shown, hide it and change the button text
-            scoreTable.style.display = 'none';
+        if (scoresContainer.style.display === 'block') {
+            scoresContainer.style.display = 'none';
+            chartCanvas.style.display = 'none';
             button.textContent = 'View Scoreboard';
         } else {
-            // If the scoreboard is hidden, show it, fetch the scores, and change the button text
-            scoreTable.style.display = 'block';
+            scoresContainer.style.display = 'block';
+            chartCanvas.style.display = 'block';
+            button.textContent = 'Hide Scoreboard';
+
             const response = await fetch('/api/gameRecord');
             const data = await response.json();
-            displayScores(data.scores); // Function to display the scores on the frontend
-            button.textContent = 'Hide Scoreboard';
+            displayScores(data.scores);
         }
     } catch (error) {
         console.error("Error fetching scores:", error);
     }
+}); 
+
+
+// Chart Button Logic
+document.getElementById('chartButton').addEventListener('click', async () => {
+    const chartCanvas = document.getElementById('cluesVsTimeChart');
+    const button = document.getElementById('chartButton');
+
+    if (chartCanvas.style.display === 'block') {
+        chartCanvas.style.display = 'none';
+        button.textContent = 'View Chart';
+    } else {
+        
+        const response = await fetch('/api/gameRecord');
+        const data = await response.json();
+        displayScores(data.scores);
+        chartCanvas.style.display = 'block';
+        button.textContent = 'Hide Chart';
+    }
 });
-
-
 // Display the scores on the frontend and render the scatter plot
 function displayScores(scores) {
 
@@ -147,4 +164,22 @@ function displayScores(scores) {
 
 }
 
+
+
+
+
+document.getElementById('toggleButton').addEventListener('click', function() {
+    const textContainer = document.getElementById('textContainer');
+    const button = document.getElementById('toggleButton');
+    
+    if (textContainer.style.display === 'none') {
+        // If text is hidden, show it and change the button text
+        textContainer.style.display = 'block';
+        button.textContent = 'Hide Text';
+    } else {
+        // If text is visible, hide it and change the button text
+        textContainer.style.display = 'none';
+        button.textContent = 'Show Text';
+    }
+});
 

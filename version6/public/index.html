@@ -26,10 +26,6 @@
         <button id="startGame">Start Game</button>
         <br>
 
-        <h2>Scoreboard</h2>
-        <!-- Scoreboard button -->
-        <button id="scoreboardButton">View Scoreboard</button>
-
 
 
 
@@ -84,15 +80,32 @@
         <!-- Add more stats as you need -->
     </div>
 
-    <div id="scoresContainer" style="display: flex; justify-content: center; align-items: center; height: 100vh;">
-        <!-- Container for the Scores Table -->
-        <div id="scoresTable" style="display: none; text-align: center;">
 
+
+    <h2>Scoreboard</h2>
+    <!-- Scoreboard button -->
+    <button id="scoreboardButton">View Scoreboard</button>
+
+    <div id="scoresContainer" style="display: none;">
+        <!-- Container for the Scores Table -->
+        <div id="scoresTable">
+            <!-- The dynamic table will be added here -->
         </div>
     </div>
 
 
-    <canvas id="cluesVsTimeChart"></canvas>
+    <!-- Chart button -->
+    <button id="chartButton">View Chart</button>
+    <!-- Set the canvas to hidden initially -->
+    <canvas id="cluesVsTimeChart" style="display: none;"></canvas>
+
+
+
+
+    <button id="toggleButton">Show Text</button>
+    <div id="textContainer" style="display: none;">This is some text that can be shown or hidden.</div>
+
+
 
 
     <!-- Scripts -->
