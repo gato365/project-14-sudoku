@@ -167,19 +167,3 @@ function displayScores(scores) {
 
 
 
-
-document.getElementById('toggleButton').addEventListener('click', function() {
-    const textContainer = document.getElementById('textContainer');
-    const button = document.getElementById('toggleButton');
-    
-    if (textContainer.style.display === 'none') {
-        // If text is hidden, show it and change the button text
-        textContainer.style.display = 'block';
-        button.textContent = 'Hide Text';
-    } else {
-        // If text is visible, hide it and change the button text
-        textContainer.style.display = 'none';
-        button.textContent = 'Show Text';
-    }
-});
-
